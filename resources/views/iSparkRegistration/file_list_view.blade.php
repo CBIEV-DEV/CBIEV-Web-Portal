@@ -1,24 +1,24 @@
 @extends('layouts.admin-app')
 
 @section('content')
+<div class="container">
+    {{-- <a href="{{ route('/fileList/{id}')}}">Project File List</a> --}}
+    <h1>Project File List</h1>
 
-{{-- <a href="{{ route('/fileList/{id}')}}">Project File List</a> --}}
-<h1>Project File List</h1>
+    <form action="{{ route('project.file.upload', $id) }}" method="post" enctype="multipart/form-data">
 
-<form action="{{ route('project.file.upload', $id) }}" method="post" enctype="multipart/form-data">
+        @csrf
 
-    @csrf
-
-    <input type="file" class="" name="projectFile" id="projectFile">
-    @error('projectFile')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-    <button type="submit" class="">Upload</button>
-</form>
-
-<br/>
+        <input type="file" class="" name="projectFile" id="projectFile">
+        @error('projectFile')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        <button type="submit" class="">Upload</button>
+    </form>
+</div>
+<br />
 
 <!-- view upload -->
 <div class="container">
@@ -30,6 +30,7 @@
                 <thead class="thead-light">
                     <th scope="col">File ID</th>
                     <th scope="col">File Name</th>
+                    <th scope="col">File Path</th>
                 </thead>
 
                 @foreach ($fileUploads as $fl)
@@ -37,7 +38,7 @@
                     <td scope="col">{{$fl->id}}</td>
                     <td scope="col">{{$fl-> filename}}</td>
                     <td scope="col">
-                        <a href="{{route('project.file.list',[$fl->id])}}">{{$fl-> file_url}}</a>
+                        <a href="{{route('project.file.list',[$fl->id])}}">{{$fl->file_url}}</a>
                     </td>
                 </tr>
                 @endforeach

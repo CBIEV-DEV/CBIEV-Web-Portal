@@ -23,8 +23,6 @@
                 <th scope="col">Format</th>
                 <th scope="col">Size</th>
              </thead>
-         <!--   foreach (\Illuminate\Support\Facades\Storage::files('gallery') as $filename) {
-                    $file = \Illuminate\Support\Facades\Storage::get($filename); -->
             <tbody>
                 @foreach ($projectfile as $pf)
                 <tr>
