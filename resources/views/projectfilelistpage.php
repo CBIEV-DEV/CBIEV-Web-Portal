@@ -2,6 +2,7 @@
 <html lang="en">
 
 <!-- upload -->
+<!--
 <form action="/process" method="post">
     <label for="projectFile">
         <input type="file" name="projectfiles[]" id="projectfile" multiple>
@@ -9,8 +10,10 @@
 
 <button type="submit" >Upload</button>
 </div>
+-->
 
 <!-- view upload -->
+<!-- 
 <div class="container">
     <div class="header">
     View Upload
@@ -35,4 +38,4 @@
         </table>
     </div>
     </div>
-</div>
+</div> -->

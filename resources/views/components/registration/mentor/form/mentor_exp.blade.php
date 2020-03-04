@@ -43,7 +43,7 @@
 </div>
 <div class="form-row m-2">
     <label title="starting up business etc." for="mentorExpEntrepreneuship">What is your experience, if any, with
-        entrepreneuship?</label><span style="color:red"> *</span>
+        <u>entrepreneuship?</u></label><span style="color:red"> *</span>
     <textarea class="form-control" id="mentorExpEntrepreneuship" name="mentorExpEntrepreneuship" cols="30" rows="5"
         value="">{{ old('mentorExpEntrepreneuship')}}</textarea>
     <span class="focus-border"></span>

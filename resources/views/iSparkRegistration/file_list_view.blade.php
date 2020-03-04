@@ -38,7 +38,11 @@
                     <td scope="col">{{$fl->id}}</td>
                     <td scope="col">{{$fl-> filename}}</td>
                     <td scope="col">
-                        <a href="{{route('project.file.list',[$fl->id])}}">{{$fl->file_url}}</a>
+                        <a download="{{route('project.file.list',[$fl->id])}}"
+                            href="{{route('project.file.list',[$fl->id])}}">{{$fl->file_url}}</a>
+
+                        {{-- <a href="{{route('project.file.list',[$fl->id])}}"target="_blank">{{$fl->file_url}}</a>
+                        --}}
                     </td>
                 </tr>
                 @endforeach
