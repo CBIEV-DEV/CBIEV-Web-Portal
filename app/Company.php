@@ -78,7 +78,7 @@ class Company extends Model
      * 
      * @return Company
      */
-    public static function checkCompanyIsExistOrCreateNew($companyRegNo, $companyname)
+    public static function saveCompany($companyRegNo, $companyname)
     {
         return Company::firstOrCreate(
             ['company_reg_no' => $companyRegNo],

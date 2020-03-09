@@ -174,5 +174,23 @@ class ProjectRegistration extends Model
         return $this->hasMany('App\ProjectRegistrationStatusTracking', 'project_registration_id', 'id')-> orderBy('created_at', 'desc')-> first();
 
     } 
+
+    /**
+     * Save project registration
+     * @param 
+     * @return ProjectRegistration1
+     */
+    public static function saveRegistration(
+        $project_title, $problem_statement, $product_solution, $target_market, $category_id, $team_leader)
+    {
+        return ProjectRegistration::create([
+            'project_title' -> $project_title,
+            'problem_statement' -> $problem_statement,
+            'product_solution' -> $product_solution,
+            'target_market' -> $target_market,
+            'category_id' -> $category_id,
+            'team_leader' -> $team_leader,
+        ]);
+    }
     // Model Function End
 }

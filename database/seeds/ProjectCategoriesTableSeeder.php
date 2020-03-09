@@ -13,37 +13,18 @@ class ProjectCategoriesTableSeeder extends Seeder
     {
         DB::table('project_categories')->insert(
             array(
-                'category_name' => 'Cat 1',
+                'category_name' => ' R&D outcomes, Final Year Projects (FYPs), Capstone Projects (Undergraduate / Postgraduate), Industrial Research Collaborations, Developmental types of work',
             )
         );
         DB::table('project_categories')->insert(
             array(
-                'category_name' => 'Cat 2',
+                'category_name' => ' Project outcomes of iSpark, Extra-Curriculum Projects, Non-Academic One-Off Projects',
             )
         );
         DB::table('project_categories')->insert(
             array(
-                'category_name' => 'Cat 3',
-            )
-        );
-        DB::table('project_categories')->insert(
-            array(
-                'category_name' => 'Cat 4',
-            )
-        );
-        DB::table('project_categories')->insert(
-            array(
-                'category_name' => 'Cat 5',
-            )
-        );
-        DB::table('project_categories')->insert(
-            array(
-                'category_name' => 'Cat 6',
-            )
-        );
-        DB::table('project_categories')->insert(
-            array(
-                'category_name' => 'Cat 7',
+                'category_name' => 'TAR UC Alumni / Public with commercializable project
+                ',
             )
         );
     }

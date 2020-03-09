@@ -76,6 +76,29 @@ class ProjectSupervisor extends Model
     {
         return $this->belongsTo('App\Company', 'company_id');
     }
+
+    /**
+     * Save project supervisor
+     */
+    public function saveProjectSupervisor(
+        $ic, $member_type, $name, $contact, $email, $company_id, $company_email, $position, $uc_id, $center_faculty_id)
+    {
+        return ProjectSupervisor::firstOrCreate(
+            ['ic' => $ic],
+            [
+
+                'member_type' => $member_type,
+                'name' => $name,
+                'contact' => $contact,
+                'email' => $email,
+                'company_id' => $company_id,
+                'company_email' => $company_email,
+                'position' => $position,
+                'uc_id' => $uc_id,
+                'center_faculty_id' => $center_faculty_id,
+            ]
+        );
+    }
     
 
 }
