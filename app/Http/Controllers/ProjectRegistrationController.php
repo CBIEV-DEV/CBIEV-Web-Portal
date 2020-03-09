@@ -32,7 +32,7 @@ class ProjectRegistrationController extends Controller
      */
     public function showRegistrationPage()
     {
-        return view('form.registration.project_registration.project_registration_forms');
+        return view('form.registration.project_registration.project_registration_form');
     }
 
     /**

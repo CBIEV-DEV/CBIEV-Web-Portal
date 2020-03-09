@@ -551,11 +551,6 @@ export default {
   },
   beforeCreate() {
         axios
-          .get('/get/programmes')
-          .then(
-            response => (this.options = response.data)
-          );
-        axios
           .get('/get/department')
           .then(
             response => (this.departmentOption = response.data)

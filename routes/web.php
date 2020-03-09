@@ -113,7 +113,6 @@ Route::prefix('isparkmentor')->group(function(){
 Route::prefix('get')->group(function(){
         Route::get('/programmes/{faculty}/{level}', 'ProjectMemberController@getProgramme');
 
-
         Route::get('/department', function(){
             return CenterFaculty::all()->pluck('name');
         })->name('get.department');

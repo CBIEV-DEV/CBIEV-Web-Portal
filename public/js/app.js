@@ -2462,9 +2462,6 @@ __webpack_require__.r(__webpack_exports__);
   beforeCreate: function beforeCreate() {
     var _this2 = this;
 
-    axios.get('/get/programmes').then(function (response) {
-      return _this2.options = response.data;
-    });
     axios.get('/get/department').then(function (response) {
       return _this2.departmentOption = response.data;
     });
@@ -3319,9 +3316,6 @@ __webpack_require__.r(__webpack_exports__);
   beforeCreate: function beforeCreate() {
     var _this2 = this;
 
-    axios.get('/get/programmes').then(function (response) {
-      return _this2.options = response.data;
-    });
     axios.get('/get/department').then(function (response) {
       return _this2.departmentOption = response.data;
     });
