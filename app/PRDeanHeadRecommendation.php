@@ -69,4 +69,17 @@ class PRDeanHeadRecommendation extends Model
     {
         return $this->belongsTo('App\ProjectRegistrationStatusTracking', 'pr_status_tracking_id');
     }
+
+    // Model Function start
+    /**
+     * 
+     */
+    public static function saveNewDeanHeadRecommendation(
+        $recommended_by, $pr_status_tracking_id)
+    {
+        return PRDeanHeadRecommendation::create([
+            'recommended_by' => $recommended_by,
+            'recommended_by' => $pr_status_tracking_id,
+        ]);
+    }
 }

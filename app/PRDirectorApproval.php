@@ -69,4 +69,17 @@ class PRDirectorApproval extends Model
     {
         return $this->belongsTo('App\ProjectRegistrationStatusTracking', 'pr_status_tracking_id');
     }
+
+    // Model Function start
+    /**
+     * 
+     */
+    public static function saveNewDirectorApproval(
+        $approved_by, $pr_status_tracking_id)
+    {
+        return PRDirectorApproval::create([
+            'approved_by' => $approved_by,
+            'pr_status_tracking_id' => $pr_status_tracking_id,
+        ]);
+    }
 }

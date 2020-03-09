@@ -68,4 +68,17 @@ class PRManagerRecommendation extends Model
         return $this->belongsTo('App\ProjectRegistrationStatusTracking', 'pr_status_tracking_id');
     }
 
+    // Model Function start
+    /**
+     * 
+     */
+    public static function saveNewManagerRecommendation(
+        $recommended_by, $pr_status_tracking_id)
+    {
+        return PRManagerRecommendation::create([
+            'recommended_by' => $recommended_by,
+            'pr_status_tracking_id' => $pr_status_tracking_id,
+        ]);
+    }
+
 }
