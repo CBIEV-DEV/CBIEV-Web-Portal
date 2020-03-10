@@ -19,17 +19,17 @@
                 <div class="logo-box">
                     <div class="taruc-logo">
                         <a href="https://www.tarc.edu.my/" target="_blank">
-                            <img src="/storage/images/logo/taruc.png">
+                            <img src="{{URL::asset('storage/images/logo/taruc.png')}}">
                         </a>
                     </div>
                     <div class="cbiev-logo">
                         <a href="https://www.tarc.edu.my/cbiev/" target="_blank">
-                            <img src="/storage/images/logo/cbiev.png">
+                            <img src="{{URL::asset('storage/images/logo/cbiev.png')}}">
                         </a>
                     </div>
                     <div class="ispark-logo">
                         <a href="#" target="_blank">
-                            <img src="/storage/images/logo/ispark.png">
+                            <img src="{{URL::asset('storage/images/logo/ispark.png')}}">
                         </a>
                     </div>
                 </div>
