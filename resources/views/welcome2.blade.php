@@ -54,17 +54,17 @@
                     <h5>New Application</h5>
                     <ul>
                         <li>
-                            <a class="button-one" href="{{route('project.registration.login')}}" target="_blank">iSpark Project</a>
+                            <a class="button-one" href="{{route('project.registration.show')}}" target="_blank">iSpark Project</a>
                         </li>
                         <li>
-                            <a class="button-one" href="{{route('mentor.temp.registration.login')}}" target="_blank">iSpark Investor</a>
+                            <a class="button-one" href="{{route('investor.registration.show')}}" target="_blank">iSpark Investor</a>
                         </li>
                         <li>
-                            <a class="button-one" href="{{route('staff.login')}}" target="_blank">iSpark Mentor</a>
+                            <a class="button-one" href="{{route('mentor.registration.show')}}" target="_blank">iSpark Mentor</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a class="button-one" href="{{route('staff.login')}}" target="_blank">Co-Working Space</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div class="disclaimer-box">
