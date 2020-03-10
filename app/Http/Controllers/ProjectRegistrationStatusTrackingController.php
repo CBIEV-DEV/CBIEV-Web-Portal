@@ -55,8 +55,8 @@ class ProjectRegistrationStatusTrackingController extends Controller
         $statusID = ProjectRegistrationStatusTracking::saveSupervisorRecStatus($projectRegis-> id)-> id;
         foreach ($projectRegis-> projectSupervisor as $supervisor) {
             
-            $supRecID = PRSupervisorRecommendation::saveNewSupervisorRecommendation( $supervisor-> id, $statusID);
-            EmailController::supervisorRecommendationInvitation($supervisor-> email, $supervisor-> company_email, $supRecID, $supervisor-> name);
+            Mail::to([$supervisor-> email, $supervisor-> company_email])
+                ->later($this-> tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($supervisor-> name, $this-> generateURL(PRSupervisorRecommendation::saveNewSupervisorRecommendation( $supervisor-> id, $statusID), 1)));//pass 1 as type supervisor));
         }
 
         // PRRecommendationAutoApprove::dispatch($statusID)->delay(now()-> addSeconds(100));
@@ -73,8 +73,9 @@ class ProjectRegistrationStatusTrackingController extends Controller
 
         foreach ($this-> centerFacultyEntryCount($projectRegisID) as $entryCount) {
             $deanHead = CenterFaculty::find($entryCount-> center_faculty_id)-> deanHead;
-            $deanHeadRecID = PRDeanHeadRecommendation::saveNewDeanHeadRecommendation($deanHead-> id, $statusID);
-            EmailController::deanheadRecommendation($deanHead-> email, $deanHeadRecID, $deanHead-> name);
+  ;
+            Mail::to($deanHead-> email)
+                ->later($this-> tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($deanHead-> name, $this-> generateURL($this-> PRDeanHeadRecommendation::saveNewDeanHeadRecommendation($deanHead-> id, $statusID)-> id, 2) ));//pass 2 as type dean/head
         }
 
         // PRRecommendationAutoApprove::dispatch($statusID)->delay(now()-> addSeconds(100));        
@@ -90,6 +91,9 @@ class ProjectRegistrationStatusTrackingController extends Controller
         $managerRecommendationID = PRManagerRecommendation::saveNewManagerRecommendation($manager->id, $statusID);
         EmailController::managerRecommendation($manager-> email, $managerRecommendationID, $manager-> name);
 
+        Mail::to([$manager-> email])
+            ->later($this-> tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($manager-> name, $this-> generateURL(PRManagerRecommendation::saveNewManagerRecommendation($manager->id, $statusID)-> id, 3)));//pass 3 as type manager
+
         // PRRecommendationAutoApprove::dispatch($statusID)->delay(now()-> addSeconds(100));
     }
 
@@ -100,8 +104,9 @@ class ProjectRegistrationStatusTrackingController extends Controller
     {
         $statusID = ProjectRegistrationStatusTracking::saveDirectorApprovalStatus($projectRegisID)-> id;;
         $director = CBIEVStaff::where('role', 3)-> get()-> first();
-        $directorApprovalID = PRDirectorApproval::saveNewDirectorApproval($director->id, $statusID,);
-        EmailController::directorApproval($director-> email, $directorApprovalID, $director-> name);
+
+        Mail::to([$director-> email])
+            ->later(self::tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($director-> name, $this-> generateURL(PRDirectorApproval::saveNewDirectorApproval($director->id, $statusID)-> id, 4)));
 
     }
 
@@ -117,5 +122,45 @@ class ProjectRegistrationStatusTrackingController extends Controller
                                 ' GROUP BY m.center_faculty_id
                                 HAVING COUNT(m.center_faculty_id) > 0');
 
+    }
+
+    /**
+     * Generate URL for project registration recommendation and approval
+     * 
+     * @param int $recID
+     * @param int $type
+     */
+    public function generateURL($recID, $type)
+    {
+        // encrypt the recommendatiom id and type
+        $cryptedRecID = Crypt::encrypt($recID);
+        $cryptedType = Crypt::encrypt($type);
+
+        // check the type and generate correct URL 
+        switch ($type) {
+            case 1:
+            case 2:
+                return URL::temporarySignedRoute('project.recommendation.get', now()->addMinutes(2880), ['type'=> $cryptedType, 'recID'=> $cryptedRecID]);
+                break;
+            case 3:
+                return URL::temporarySignedRoute('project.recommendation.manager.get', now()->addMinutes(2880), ['type'=> $cryptedType, 'recID'=> $cryptedRecID]);
+                break;
+            case 4:
+                return URL::temporarySignedRoute('project.approval.get', now()->addMinutes(2880), ['type'=> $cryptedType, 'recID'=> $cryptedRecID]);
+                break;
+            default:
+            // abort the request if no matched case
+                abort(404);
+        }
+    } 
+
+    /**
+     * Get 10 second delay time to queue email
+     * 
+     * @return Carbon/Date
+     */
+    public function tenSecondDelayTime()
+    {
+        return now()->addSeconds(10);   
     }
 }
