@@ -104,6 +104,8 @@ Route::prefix('isparkmentor')->group(function(){
         Route::get('', 'InvestorRegistrationController@showRegistrationForm')->name('investor.registration.show');
         Route::post('', 'InvestorRegistrationController@saveRegistration')->name('investor.registration.submit');
     });
+
+    Route::get('success','ProjectRegistrationController@success')->name('registration.redirect');
 });
 
 /**
@@ -124,25 +126,6 @@ Route::prefix('get')->group(function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/tomail', 'ProjectRegistrationStatusTrackingController@mailTo');
-Route::get('/mentor', function(){
-    return view('form.registration.mentor.mentor_registration_form');
-});
-Route::get('/investor', function(){
-    return view('form.registration.investor.investor_registration_form');
-});
-Route::get('/test', function(){
-    $centerFaculty = CenterFaculty::all()-> only('id', 'name', 'code');
-
-    foreach ($centerFaculty as $name => $id) {
-        echo $name . ' has id ' . $id . "\r\n";
-        echo "<br>";
-    }
-    return dd($centerFaculty);
-});
-Route::get('/test2', function(){
-    return view('form.registration.investor.investor_registration_form');
-});
 
 // project
 Route::get('/project/rec/{type}/{recID}','RecommendationController@projectRecommendation')->name('project.recommendation.get');
@@ -177,3 +160,6 @@ Route::prefix('isparkproject')->group(function(){
 
 
 Route::get('test33', 'EmailController@test');
+Route::get('test32', function () {
+    return view('form.registration.redirect');
+});

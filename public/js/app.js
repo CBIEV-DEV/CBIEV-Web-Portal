@@ -2375,37 +2375,37 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'B' || this.members[index].memberUCID.charAt(3) == 'b') {
-          this.members[index].memberDepartment = "Facuty of Accounting, Finance and Business";
+          this.members[index].memberDepartment = "Faculty of Accounting, Finance and Business";
           this.members[index].memberDepartmentCode = 'fafb';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'K' || this.members[index].memberUCID.charAt(3) == 'k') {
-          this.members[index].memberDepartment = "Facuty of Communication and Creative Industries";
+          this.members[index].memberDepartment = "Faculty of Communication and Creative Industries";
           this.members[index].memberDepartmentCode = 'fcci';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'L' || this.members[index].memberUCID.charAt(3) == 'l') {
-          this.members[index].memberDepartment = "Facuty of Applied Science";
+          this.members[index].memberDepartment = "Faculty of Applied Science";
           this.members[index].memberDepartmentCode = 'foas';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'V' || this.members[index].memberUCID.charAt(3) == 'v') {
-          this.members[index].memberDepartment = "Facuty of Build Envionment";
+          this.members[index].memberDepartment = "Faculty of Build Envionment";
           this.members[index].memberDepartmentCode = 'fobe';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'M' || this.members[index].memberUCID.charAt(3) == 'm') {
-          this.members[index].memberDepartment = "Facuty of Computing and Information Technology";
+          this.members[index].memberDepartment = "Faculty of Computing and Information Technology";
           this.members[index].memberDepartmentCode = 'focs';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'G' || this.members[index].memberUCID.charAt(3) == 'g') {
-          this.members[index].memberDepartment = "Facuty of Engineering and Technology";
+          this.members[index].memberDepartment = "Faculty of Engineering and Technology";
           this.members[index].memberDepartmentCode = 'foet';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'J' || this.members[index].memberUCID.charAt(3) == 'j') {
-          this.members[index].memberDepartment = "Facuty of Social Science and Humanities";
+          this.members[index].memberDepartment = "Faculty of Social Science and Humanities";
           this.members[index].memberDepartmentCode = 'fssh';
         }
       } else if (this.members[index].memberUCID.length < 4 && this.members[index].memberType == 1) {
@@ -2419,14 +2419,9 @@ __webpack_require__.r(__webpack_exports__);
       } else if (this.members[index].memberType == 4) {
         this.members[index].memberDepartment = "N/A";
         this.members[index].memberDepartmentCode = 'public';
-      } //continue here
-      //url = getprog + faculty id code & lvl code
-
+      }
 
       if (this.members[index].memberUCID.length == 10) {
-        console.log('test12'); // faculty = this.members[index].memberUCID.charAt(4)
-        // level = this.members[index].memberUCID.charAt(5)
-
         axios.get('/get/programmes/' + this.members[index].memberUCID.charAt(3) + '/' + this.members[index].memberUCID.charAt(4)).then(function (response) {
           return _this.members[index].memberProgrammeList = response.data;
         });
@@ -3221,7 +3216,7 @@ __webpack_require__.r(__webpack_exports__);
     checkFaculty: function checkFaculty() {
       var _this = this;
 
-      if (this.leaderUCID.length >= 4 && this.leaderUCID.length == 4 && this.leaderType == 1) {
+      if (this.leaderUCID.length == 10 && this.leaderType == 1) {
         if (this.leaderUCID.charAt(3) == 'P' || this.leaderUCID.charAt(3) == 'p') {
           this.leaderDepartment = "Centre for Postgraduate Studies and Research";
           this.leaderDepartmentCode = 'focs';
@@ -3233,37 +3228,37 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         if (this.leaderUCID.charAt(3) == 'B' || this.leaderUCID.charAt(3) == 'b') {
-          this.leaderDepartment = "Facuty of Accounting, Finance and Business";
+          this.leaderDepartment = "Faculty of Accounting, Finance and Business";
           this.leaderDepartmentCode = 'focs';
         }
 
         if (this.leaderUCID.charAt(3) == 'K' || this.leaderUCID.charAt(3) == 'k') {
-          this.leaderDepartment = "Facuty of Communication and Creative Industries";
+          this.leaderDepartment = "Faculty of Communication and Creative Industries";
           this.leaderDepartmentCode = 'focs';
         }
 
         if (this.leaderUCID.charAt(3) == 'L' || this.leaderUCID.charAt(3) == 'l') {
-          this.leaderDepartment = "Facuty of Applied Science";
+          this.leaderDepartment = "Faculty of Applied Science";
           this.leaderDepartmentCode = 'focs';
         }
 
         if (this.leaderUCID.charAt(3) == 'V' || this.leaderUCID.charAt(3) == 'v') {
-          this.leaderDepartment = "Facuty of Build Envionment";
+          this.leaderDepartment = "Faculty of Build Envionment";
           this.leaderDepartmentCode = 'focs';
         }
 
         if (this.leaderUCID.charAt(3) == 'M' || this.leaderUCID.charAt(3) == 'm') {
-          this.leaderDepartment = "Facuty of Computing and Information Technology";
+          this.leaderDepartment = "Faculty of Computing and Information Technology";
           this.leaderDepartmentCode = 'focs';
         }
 
         if (this.leaderUCID.charAt(3) == 'G' || this.leaderUCID.charAt(3) == 'g') {
-          this.leaderDepartment = "Facuty of Engineering and Technology";
+          this.leaderDepartment = "Faculty of Engineering and Technology";
           this.leaderDepartmentCode = 'focs';
         }
 
         if (this.leaderUCID.charAt(3) == 'J' || this.leaderUCID.charAt(3) == 'j') {
-          this.leaderDepartment = "Facuty of Social Science and Humanities";
+          this.leaderDepartment = "Faculty of Social Science and Humanities";
           this.leaderDepartmentCode = 'focs';
         }
       } else if (this.leaderUCID.length < 4 && this.leaderType == 1) {
@@ -3277,13 +3272,9 @@ __webpack_require__.r(__webpack_exports__);
       } else if (this.leaderType == 4) {
         this.leaderDepartment = "N/A";
         this.leaderDepartmentCode = 'public';
-      } //continue here
-
+      }
 
       if (this.leaderUCID.length == 10) {
-        console.log('test12'); // faculty = this.leaderUCID.charAt(4)
-        // level = this.leaderUCID.charAt(5)
-
         axios.get('/get/programmes/' + this.leaderUCID.charAt(3) + '/' + this.leaderUCID.charAt(4)).then(function (response) {
           return _this.leaderProgrammeList = response.data;
         });
@@ -53955,8 +53946,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\workspace\CBIEV-Web-Portal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\workspace\CBIEV-Web-Portal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Workspace\CBEIV Web Portal\test\CBIEV-Web-Portal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Workspace\CBEIV Web Portal\test\CBIEV-Web-Portal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

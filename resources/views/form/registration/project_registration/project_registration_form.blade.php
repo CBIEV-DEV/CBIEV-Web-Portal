@@ -6,7 +6,7 @@
     <div class="">
         <div>
             <div class="text-center">
-                <h4 class="display-4 form-title">iSpark Project Registration</h4>
+                <h4 class="display-4 form-title">iSpark Project Application</h4>
                 <h4 class="display-4 form-title">----------------------------------------------</h4>
             </div>
         </div>

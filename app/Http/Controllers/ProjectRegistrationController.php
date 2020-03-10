@@ -17,9 +17,6 @@ use App\ProjectRegistrationStatusTracking;
 
 class ProjectRegistrationController extends Controller
 {
-    public  $project;
-    public  $member;
-    public  $supervisor;
     private  $memberProgrammes = [];
 
     private $company_id;
@@ -64,6 +61,7 @@ class ProjectRegistrationController extends Controller
         $teamLeader = $this->saveProjectTeamleader($request);
         // Save Project Registration
         $projectRegistration = ProjectRegistration::saveRegistration($request-> projectTitle, $request-> projectstate, $request-> prodSol, $request-> targetMark, $request-> projectCategory, $teamLeader->id);
+        $projectRegistration-> sync($teamLeader, false);// sync project registration with team leader
         // Save Project Participants
         $this->saveProjectParticipant($request, $projectRegistration);
         // Save Project Supervisor
@@ -74,6 +72,7 @@ class ProjectRegistrationController extends Controller
         Mail::to([$teamLeader-> email, $teamLeader-> company_email])
             ->later(10, new SuccessProjectRegistrationNotification($teamLeader-> name, $projectRegistration-> project_title, $projectRegistration-> id));
 
+        return redirect(route('registration.redirect'));
     }
     
     /**
@@ -179,5 +178,10 @@ class ProjectRegistrationController extends Controller
     public function showLoginForm()
     {
         return view('auth.project_registration.project_registration_login');
+    }
+
+    public function success()
+    {
+        return view('form.registration.redirect');
     }
 }
