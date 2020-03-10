@@ -80,7 +80,7 @@ class ProjectSupervisor extends Model
     /**
      * Save project supervisor
      */
-    public function saveProjectSupervisor(
+    public static function saveProjectSupervisor(
         $ic, $member_type, $name, $contact, $email, $company_id, $company_email, $position, $uc_id, $center_faculty_id)
     {
         return ProjectSupervisor::firstOrCreate(

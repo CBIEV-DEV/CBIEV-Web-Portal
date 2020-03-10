@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mail;
 
 use App\ProjectMember;
 use App\Programme;
@@ -71,7 +72,7 @@ class ProjectRegistrationController extends Controller
         ProjectRegistrationStatusTracking::saveSubmitedStatus($projectRegistration-> id);
         // Send Notification Mail to Team Leader
         Mail::to([$teamLeader-> email, $teamLeader-> company_email])
-            ->later(self::tenSecondDelayTime(), new SuccessProjectRegistrationNotification($teamLeader-> name, $projectRegistration-> project_title, $projectRegistration-> id));
+            ->later(10, new SuccessProjectRegistrationNotification($teamLeader-> name, $projectRegistration-> project_title, $projectRegistration-> id));
 
     }
     
@@ -133,7 +134,7 @@ class ProjectRegistrationController extends Controller
         
                 $projectRegistration -> projectMember() 
                 -> sync(ProjectMember::saveMember(
-                    $request-> memberIC[$i], $request-> memberType[$i], $request-> memberName[$i], $request-> memberContact[$i], $request-> memberEmail[$i], $request-> memberUCID[$i], $this-> company_id, $request-> memberCompanyEmail[$i], $request-> memberPosition[$i], CenterFaculty::getIDByName($request-> leaderDepartment), Programme::getIDByProgrammeName($request-> memberProgramme[$i])
+                    $request-> memberIC[$i], $request-> memberType[$i], $request-> memberName[$i], $request-> memberContact[$i], $request-> memberEmail[$i], $request-> memberUCID[$i], $this-> company_id, $request-> memberCompanyEmail[$i], $request-> memberPosition[$i], CenterFaculty::getIDByName($request-> memberDepartment[$i]), Programme::getIDByProgrammeName($this-> memberProgrammes[$i])
                 ), false);// Save team leader and return team leader 
             }
         }
@@ -147,7 +148,7 @@ class ProjectRegistrationController extends Controller
     {
         if ($request-> supervisorIndex > 0) {// Check if project supervisor is more than 0
             for ($i=0; $i < $request-> supervisorIndex; $i++) {// Loop to save each participant
-                switch ($request-> supervisorType[$i]) {// Set Company ID according to supervisor type and set faculty id
+                switch ($request-> supType[$i]) {// Set Company ID according to supervisor type and set faculty id
                     case 2: 
                         $this->center_faculty_id =  CenterFaculty::getIDByName($request-> supervisorDepartmentCode[$i] );// set faculty id
                         $this->companyID =  1;// 2 is staff, Company ID 1 = taruc

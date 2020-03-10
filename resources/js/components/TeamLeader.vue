@@ -166,7 +166,7 @@
           v-model="leaderDepartment"
           @select="selectFaculty"></multiselect>
         </div>
-        <input type="hidden" name="leaderDepartment" v-model="leaderDepartmentCode">
+        <input type="hidden" name="leaderDepartment" v-model="leaderDepartment">
        
       </div>
       <div class="form-row">
@@ -400,7 +400,6 @@ export default {
       }
 
       //continue here
-    //url = getprog + faculty id code & lvl code
 
     if (this.leaderUCID.length == 10) {
 

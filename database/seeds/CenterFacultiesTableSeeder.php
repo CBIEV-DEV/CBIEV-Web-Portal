@@ -77,31 +77,31 @@ class CenterFacultiesTableSeeder extends Seeder
                 'code' => 'dsa',
             ],    
             [
-                'name' => 'Facuty of Accountancy, Finance and Business',
+                'name' => 'Faculty of Accountancy, Finance and Business',
                 'code' => 'fafb',
             ],
             [
-                'name' => 'Facuty of Applied Science',
+                'name' => 'Faculty of Applied Science',
                 'code' => 'foas',
             ],
             [
-                'name' => 'Facuty of Build Enviroment',
+                'name' => 'Faculty of Build Enviroment',
                 'code' => 'fobe',
             ],
             [
-                'name' => 'Facuty of Communication and Creative Industry',
+                'name' => 'Faculty of Communication and Creative Industry',
                 'code' => 'fcci',
             ],
             [
-                'name' => 'Facuty of Computing and Information Technology',
+                'name' => 'Faculty of Computing and Information Technology',
                 'code' => 'focs',
             ],
             [
-                'name' => 'Facuty of Engineering and Technology',
+                'name' => 'Faculty of Engineering and Technology',
                 'code' => 'foet',
             ],
             [
-                'name' => 'Facuty of Social Science and Humanities',
+                'name' => 'Faculty of Social Science and Humanities',
                 'code' => 'fssh',
             ],
             [

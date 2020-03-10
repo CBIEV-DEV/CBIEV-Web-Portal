@@ -94,7 +94,7 @@ class ProjectRegistrationStatusTracking extends Model
     /**
      * To save new project status tracking
      */
-    public function saveStatusTracking($project_registration_status, $project_registration_id){
+    public static function saveStatusTracking($project_registration_status, $project_registration_id){
         ProjectRegistrationStatusTracking::create([
             'project_registration_status' => $project_registration_status,
             'project_registration_id' => $project_registration_id

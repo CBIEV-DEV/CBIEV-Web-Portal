@@ -3278,7 +3278,6 @@ __webpack_require__.r(__webpack_exports__);
         this.leaderDepartment = "N/A";
         this.leaderDepartmentCode = 'public';
       } //continue here
-      //url = getprog + faculty id code & lvl code
 
 
       if (this.leaderUCID.length == 10) {
@@ -39914,7 +39913,7 @@ var render = function() {
                       expression: "member.memberDepartment"
                     }
                   ],
-                  attrs: { type: "hidden", name: "memberDepartmentCode[]" },
+                  attrs: { type: "hidden", name: "memberDepartment[]" },
                   domProps: { value: member.memberDepartment },
                   on: {
                     input: function($event) {
@@ -41183,18 +41182,18 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.leaderDepartmentCode,
-              expression: "leaderDepartmentCode"
+              value: _vm.leaderDepartment,
+              expression: "leaderDepartment"
             }
           ],
           attrs: { type: "hidden", name: "leaderDepartment" },
-          domProps: { value: _vm.leaderDepartmentCode },
+          domProps: { value: _vm.leaderDepartment },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.leaderDepartmentCode = $event.target.value
+              _vm.leaderDepartment = $event.target.value
             }
           }
         })
@@ -53956,8 +53955,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Workspace\CBEIV Web Portal\test\CBIEV-Web-Portal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Workspace\CBEIV Web Portal\test\CBIEV-Web-Portal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\workspace\CBIEV-Web-Portal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\workspace\CBIEV-Web-Portal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

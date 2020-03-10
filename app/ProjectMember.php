@@ -98,10 +98,10 @@ class ProjectMember extends Model
      * @param
      * @return ProjectMember
      */
-    public function saveMember(
+    public static function saveMember(
         $ic, $member_type, $name, $contact, $email, $uc_id, $company_id, $company_email, $position, $center_faculty_id, $programme_study)
     {
-        return ProjectMember::firstOrCreate([
+        return ProjectMember::firstOrCreate(
             ['ic' => $ic],
             [
                 'member_type' =>  $member_type,
@@ -116,6 +116,6 @@ class ProjectMember extends Model
                 'programme_study' => $programme_study,
                 'is_active' => 1
             ]
-        ]);
+        );
     }
 }

@@ -185,7 +185,7 @@
           v-model="member.memberDepartment"
           @select="selectFaculty(index)"></multiselect>
 
-          <input type="hidden" name="memberDepartmentCode[]" v-model="member.memberDepartment">
+          <input type="hidden" name="memberDepartment[]" v-model="member.memberDepartment">
         </div>
        
       </div>
