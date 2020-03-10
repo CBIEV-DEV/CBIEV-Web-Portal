@@ -32,7 +32,7 @@ class ProjectRegistrationController extends Controller
      */
     public function showRegistrationPage()
     {
-        return view('form.registration.project_registration.project_registration_form');
+        return view('form.registration.project_registration.project_registration_form');// return view for project registration form
     }
 
     /**
@@ -57,17 +57,19 @@ class ProjectRegistrationController extends Controller
      */
     public function submitRegistration(Request $request)
     {
+        // Sanitize input from request
         $this->sanitize($request);// sanitize $request input
-
+        // Save Team Leader
         $teamLeader = $this->saveProjectTeamleader($request);
-
+        // Save Project Registration
         $projectRegistration = ProjectRegistration::saveRegistration($request-> projectTitle, $request-> projectstate, $request-> prodSol, $request-> targetMark, $request-> projectCategory, $teamLeader->id);
-
+        // Save Project Participants
         $this->saveProjectParticipant($request, $projectRegistration);
+        // Save Project Supervisor
         $this->saveProjectSupervisor($request, $projectRegistration);
-        $this->statusTrackingSubmited($projectRegistration-> id);
+        // Save Project Status 'Submited'
         ProjectRegistrationStatusTracking::saveSubmitedStatus($projectRegistration-> id);
-
+        // Send Notification Mail to Team Leader
         Mail::to([$teamLeader-> email, $teamLeader-> company_email])
             ->later(self::tenSecondDelayTime(), new SuccessProjectRegistrationNotification($teamLeader-> name, $projectRegistration-> project_title, $projectRegistration-> id));
 
@@ -81,15 +83,16 @@ class ProjectRegistrationController extends Controller
      */
     public function saveProjectTeamleader($request)
     {
+        // Set Company ID according to leader type
         switch ($request-> leaderType) {
             case 1:
             case 2:
-                $this-> companyID = 1;
+                $this-> companyID = 1; // 1 and 2 are student and staff of TARUC, Company ID 1 is TARUC
                 break;
             case 3:
             case 4:
                 if ($request->leaderHasCompany == true) {
-                    $companyID = Company::saveCompany($request->leaderCompanyRegNo ,$request->leaderCompanyName)-> id;
+                    $companyID = Company::saveCompany($request->leaderCompanyRegNo ,$request->leaderCompanyName)-> id;// Save company and get company id
                 }
             default:
                 $companyID = null;
@@ -98,57 +101,7 @@ class ProjectRegistrationController extends Controller
 
         return ProjectMember::saveMember(
             $request-> leaderIC, $request-> leaderType, $request-> leaderName, $request-> leaderContact, $request-> leaderEmail, $request-> leaderUCID, $this-> company_id, $request-> leaderCompanyEmail, $request-> leaderPosition, CenterFaculty::getIDByName($request-> leaderDepartment), Programme::getIDByProgrammeName($request-> leaderProgramme)
-        );
-    }
-
-    /**
-     * To save project registration into database
-     *
-     * @param Request $request
-     * @param ProjectParticipant $teamLeader
-     *
-     * @return ProjectRegistration $projectRegistration
-     *
-     */
-    public function saveProjectRegistration($request, $teamLeader)
-    {
-        $projectRegistration = ProjectRegistration::projectRegistration();
-
-        $projectRegistration -> project_title = $request-> projectTitle;
-        $projectRegistration -> problem_statement = $request-> projectstate;
-        $projectRegistration -> product_solution = $request-> prodSol;
-        $projectRegistration -> target_market = $request-> targetMark;
-
-        switch ($request-> projectCategory) {
-            case '1':
-                $projectRegistration -> category_id = 1;
-                break;
-            case '2':
-                $projectRegistration -> category_id = 2;
-                break;
-            case '3':
-                $projectRegistration -> category_id = 3;
-                break;
-            case '4':
-                $projectRegistration -> category_id = 4;
-                break;
-            case '5':
-                $projectRegistration -> category_id = 6;
-                break;
-            case '6':
-                $projectRegistration -> category_id = 7;
-                break;
-            case '7':
-                $projectRegistration -> category_id = 8;
-                break;
-        }
-
-        $projectRegistration -> team_leader = $teamLeader -> id;
-        $projectRegistration -> save();
-
-        $projectRegistration -> projectMember() -> sync($teamLeader, false);
-
-        return $projectRegistration;
+        );// Save team leader and return team leader 
     }
 
     /**
@@ -160,18 +113,18 @@ class ProjectRegistrationController extends Controller
      */
     public function saveProjectParticipant($request, $projectRegistration)
     {   
-        if ($request-> participantIndex > 0) {
-            for ($i=0; $i < $request-> participantIndex; $i++) {
+        if ($request-> participantIndex > 0) {// Check if participant is more than 0
+            for ($i=0; $i < $request-> participantIndex; $i++) {// Loop to save each participant
                 
-                switch ($request-> memberType[$i]) {
+                switch ($request-> memberType[$i]) {// Set Company ID according to participant type
                     case 1:
                     case 2:
-                        $this-> companyID = 1;
+                        $this-> companyID = 1;// 1 and 2 are student and staff of TARUC, Company ID 1 is TARUC
                         break;
                     case 3:
                     case 4:
                         if ($request->memberHasCompany == true) {
-                            $this-> companyID = Company::saveCompany($request-> memberCompanyRegNo ,$request-> memberCompanyName)-> id;
+                            $this-> companyID = Company::saveCompany($request-> memberCompanyRegNo ,$request-> memberCompanyName)-> id;// Save company and get company id
                         }
                     default:
                         $companyID = null;
@@ -181,7 +134,7 @@ class ProjectRegistrationController extends Controller
                 $projectRegistration -> projectMember() 
                 -> sync(ProjectMember::saveMember(
                     $request-> memberIC[$i], $request-> memberType[$i], $request-> memberName[$i], $request-> memberContact[$i], $request-> memberEmail[$i], $request-> memberUCID[$i], $this-> company_id, $request-> memberCompanyEmail[$i], $request-> memberPosition[$i], CenterFaculty::getIDByName($request-> leaderDepartment), Programme::getIDByProgrammeName($request-> memberProgramme[$i])
-                ), false);
+                ), false);// Save team leader and return team leader 
             }
         }
     }
@@ -192,21 +145,21 @@ class ProjectRegistrationController extends Controller
      */
     public function saveProjectSupervisor($request, $projectRegistration)
     {
-        if ($request-> supervisorIndex > 0) {
-            for ($i=0; $i < $request-> supervisorIndex; $i++) {
-                switch ($request-> supervisorType[$i]) {
-                    case 2:
-                        $this->center_faculty_id =  CenterFaculty::getIDByName($request-> supervisorDepartmentCode[$i] );
-                        $this->companyID =  1;
+        if ($request-> supervisorIndex > 0) {// Check if project supervisor is more than 0
+            for ($i=0; $i < $request-> supervisorIndex; $i++) {// Loop to save each participant
+                switch ($request-> supervisorType[$i]) {// Set Company ID according to supervisor type and set faculty id
+                    case 2: 
+                        $this->center_faculty_id =  CenterFaculty::getIDByName($request-> supervisorDepartmentCode[$i] );// set faculty id
+                        $this->companyID =  1;// 2 is staff, Company ID 1 = taruc
                         break;
                     case 3:
                     case 4:
-                        $this-> center_faculty_id =  null;
+                        $this-> center_faculty_id =  null;// 3 and 4 are alumni and public, doesn't belongs to tarcu, hence not under any faculty or center 
 
                         if ($request-> supervisorHasCompany[$i] == true) {
-                            $this-> companyID = Company::saveCompany($request-> supervisorCompanyRegNo ,$request-> supervisorCompanyName)-> id;
+                            $this-> companyID = Company::saveCompany($request-> supervisorCompanyRegNo ,$request-> supervisorCompanyName)-> id;// save company and get company id 
                         }else {
-                            $this-> companyID = null;
+                            $this-> companyID = null;// if no company, set to null
                         }
                     default:
                         $this-> companyID = null;
@@ -214,7 +167,7 @@ class ProjectRegistrationController extends Controller
                 }
             
                 $projectRegistration -> projectSupervisor() 
-                -> sync(ProjectSupervisor::saveProjectSupervisor($request-> supervisorIC[$i], $request-> supType[$i], $request-> supervisorName[$i], $request-> supervisorContact[$i], $request-> supervisorEmail[$i], $this-> companyID, $request-> supervisorCompanyEmail[$i], $request-> supervisorPosition[$i], $request-> supervisorUCID[$i], $this-> center_faculty_id), false);
+                -> sync(ProjectSupervisor::saveProjectSupervisor($request-> supervisorIC[$i], $request-> supType[$i], $request-> supervisorName[$i], $request-> supervisorContact[$i], $request-> supervisorEmail[$i], $this-> companyID, $request-> supervisorCompanyEmail[$i], $request-> supervisorPosition[$i], $request-> supervisorUCID[$i], $this-> center_faculty_id), false);// Save supervisor and return supervisor 
             }
         }
     }
