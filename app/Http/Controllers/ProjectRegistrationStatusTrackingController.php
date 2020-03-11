@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mail;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\URL;
+use App\Mail\ProjectRegistrationRecommendationInvitation;
 
 use App\ProjectRegistration;
 use App\ProjectRegistrationStatusTracking;
 use Illuminate\Support\Facades\DB;
 use App\CenterFaculty;
 use App\CBIEVStaff;
-use App\Jobs\PRRecommendationAutoApprove;
-
 use App\PRDeanHeadRecommendation;
 use App\PRDirectorApproval;
 use App\PRManagerRecommendation;
@@ -56,7 +58,7 @@ class ProjectRegistrationStatusTrackingController extends Controller
         foreach ($projectRegis-> projectSupervisor as $supervisor) {
             
             Mail::to([$supervisor-> email, $supervisor-> company_email])
-                ->later($this-> tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($supervisor-> name, $this-> generateURL(PRSupervisorRecommendation::saveNewSupervisorRecommendation( $supervisor-> id, $statusID), 1)));//pass 1 as type supervisor));
+                ->later($this-> tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($supervisor-> name, $this-> generateURL(PRSupervisorRecommendation::saveNewSupervisorRecommendation( $supervisor-> id, $statusID)-> id, 1)));//pass 1 as type supervisor));
         }
 
         // PRRecommendationAutoApprove::dispatch($statusID)->delay(now()-> addSeconds(100));
@@ -67,15 +69,15 @@ class ProjectRegistrationStatusTrackingController extends Controller
      * @param UnsignedBigInt $projectRegisID
      * 
      */
-    public function startDeanHeadRecommendation($projectRegisID)
+    public static function startDeanHeadRecommendation($projectRegisID)
     {
-        $statusID = ProjectRegistrationStatusTracking::saveDeanHeadRecStatus($projectRegisID-> id)-> id;
+        $statusID = ProjectRegistrationStatusTracking::saveDeanHeadRecStatus($projectRegisID)-> id;
 
-        foreach ($this-> centerFacultyEntryCount($projectRegisID) as $entryCount) {
+        foreach (self::centerFacultyEntryCount($projectRegisID) as $entryCount) {
             $deanHead = CenterFaculty::find($entryCount-> center_faculty_id)-> deanHead;
   ;
             Mail::to($deanHead-> email)
-                ->later($this-> tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($deanHead-> name, $this-> generateURL($this-> PRDeanHeadRecommendation::saveNewDeanHeadRecommendation($deanHead-> id, $statusID)-> id, 2) ));//pass 2 as type dean/head
+                ->later(self::tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($deanHead-> name, self::generateURL(PRDeanHeadRecommendation::saveNewDeanHeadRecommendation($deanHead-> id, $statusID)-> id, 2) ));//pass 2 as type dean/head
         }
 
         // PRRecommendationAutoApprove::dispatch($statusID)->delay(now()-> addSeconds(100));        
@@ -89,7 +91,6 @@ class ProjectRegistrationStatusTrackingController extends Controller
         $statusID = ProjectRegistrationStatusTracking::saveManagerRecStatus($projectRegisID)-> id;
         $manager = CBIEVStaff::where('role', 2)-> get()-> first();
         $managerRecommendationID = PRManagerRecommendation::saveNewManagerRecommendation($manager->id, $statusID);
-        EmailController::managerRecommendation($manager-> email, $managerRecommendationID, $manager-> name);
 
         Mail::to([$manager-> email])
             ->later($this-> tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($manager-> name, $this-> generateURL(PRManagerRecommendation::saveNewManagerRecommendation($manager->id, $statusID)-> id, 3)));//pass 3 as type manager
@@ -113,12 +114,12 @@ class ProjectRegistrationStatusTrackingController extends Controller
     /**
      * Get Center/Faculty/Department Member Entry Count
      */
-    public function centerFacultyEntryCount($projectRegisID)
+    public static function centerFacultyEntryCount($projectRegisID)
     {
         return DB::select('SELECT m.center_faculty_id as center_faculty_id, COUNT(m.center_faculty_id) as entry_count
                                 FROM project_members m, pr_member_list l
                                 WHERE  l.project_member_id = m.id 
-                                AND l.project_registration_id '. $projectRegisID .
+                                AND l.project_registration_id ='. $projectRegisID .
                                 ' GROUP BY m.center_faculty_id
                                 HAVING COUNT(m.center_faculty_id) > 0');
 
@@ -130,7 +131,7 @@ class ProjectRegistrationStatusTrackingController extends Controller
      * @param int $recID
      * @param int $type
      */
-    public function generateURL($recID, $type)
+    public static function generateURL($recID, $type)
     {
         // encrypt the recommendatiom id and type
         $cryptedRecID = Crypt::encrypt($recID);
@@ -159,7 +160,7 @@ class ProjectRegistrationStatusTrackingController extends Controller
      * 
      * @return Carbon/Date
      */
-    public function tenSecondDelayTime()
+    public static function tenSecondDelayTime()
     {
         return now()->addSeconds(10);   
     }

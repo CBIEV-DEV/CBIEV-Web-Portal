@@ -95,7 +95,7 @@ class ProjectRegistrationStatusTracking extends Model
      * To save new project status tracking
      */
     public static function saveStatusTracking($project_registration_status, $project_registration_id){
-        ProjectRegistrationStatusTracking::create([
+        return ProjectRegistrationStatusTracking::create([
             'project_registration_status' => $project_registration_status,
             'project_registration_id' => $project_registration_id
         ]);
@@ -107,7 +107,7 @@ class ProjectRegistrationStatusTracking extends Model
      */
     public static function saveSubmitedStatus($project_registration_id)
     {
-        self::saveStatusTracking(0, $project_registration_id);
+        return self::saveStatusTracking(0, $project_registration_id);
     }
     /**
      * To save project tracking with status 'supervisor recommendation'
@@ -115,7 +115,7 @@ class ProjectRegistrationStatusTracking extends Model
      */
     public static function saveSupervisorRecStatus($project_registration_id)
     {
-        self::saveStatusTracking(1, $project_registration_id);
+        return self::saveStatusTracking(1, $project_registration_id);
     }
     /**
      * To save project tracking with status 'dean/head recommendation'
@@ -123,7 +123,7 @@ class ProjectRegistrationStatusTracking extends Model
      */
     public static function saveDeanHeadRecStatus($project_registration_id)
     {
-        self::saveStatusTracking(2, $project_registration_id);
+        return self::saveStatusTracking(2, $project_registration_id);
     }
     /**
      * To save project tracking with status 'manager recommendation'
@@ -131,7 +131,7 @@ class ProjectRegistrationStatusTracking extends Model
      */
     public static function saveManagerRecStatus($project_registration_id)
     {
-        self::saveStatusTracking(3, $project_registration_id);
+        return self::saveStatusTracking(3, $project_registration_id);
     }
     /**
      * To save project tracking with status 'director approval'
@@ -139,7 +139,7 @@ class ProjectRegistrationStatusTracking extends Model
      */
     public static function saveDirectorApprovalStatus($project_registration_id)
     {
-        self::saveStatusTracking(4, $project_registration_id);
+        return self::saveStatusTracking(4, $project_registration_id);
     }
     /**
      * To save project tracking with status 'approved'
@@ -147,7 +147,7 @@ class ProjectRegistrationStatusTracking extends Model
      */
     public static function saveApprovedStatus($project_registration_id)
     {
-        self::saveStatusTracking(5, $project_registration_id);
+        return self::saveStatusTracking(5, $project_registration_id);
     }
     /**
      * To save project tracking with status 'rejected'
@@ -155,7 +155,7 @@ class ProjectRegistrationStatusTracking extends Model
      */
     public static function saveRejectedStatus($project_registration_id)
     {
-        self::saveStatusTracking(6, $project_registration_id);
+        return self::saveStatusTracking(6, $project_registration_id);
     }
 }
  

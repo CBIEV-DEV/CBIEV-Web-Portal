@@ -76,6 +76,10 @@ class ProjectSupervisor extends Model
     {
         return $this->belongsTo('App\Company', 'company_id');
     }
+    public function prRecommendation()
+    {
+        return $this->hasMany('App\PRSupervisorRecommendation', 'recommended_by', 'id');
+    }
 
     /**
      * Save project supervisor

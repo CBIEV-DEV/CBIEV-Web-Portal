@@ -2365,22 +2365,22 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.members[index].memberUCID.length == 10 && this.members[index].memberType == 1) {
         if (this.members[index].memberUCID.charAt(3) == 'P' || this.members[index].memberUCID.charAt(3) == 'p') {
-          this.members[index].memberDepartment = "Centre for Postgraduate Studies and Research";
+          this.members[index].memberDepartment = "Center of Postgraduete Studies and Research";
           this.members[index].memberDepartmentCode = 'cpsr';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'R' || this.members[index].memberUCID.charAt(3) == 'r') {
-          this.members[index].memberDepartment = "Centre for Pre-University Studies";
+          this.members[index].memberDepartment = "Center of Pre-University Studies";
           this.members[index].memberDepartmentCode = 'cpus';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'B' || this.members[index].memberUCID.charAt(3) == 'b') {
-          this.members[index].memberDepartment = "Faculty of Accounting, Finance and Business";
+          this.members[index].memberDepartment = "Faculty of Accountancy, Finance and Business";
           this.members[index].memberDepartmentCode = 'fafb';
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'K' || this.members[index].memberUCID.charAt(3) == 'k') {
-          this.members[index].memberDepartment = "Faculty of Communication and Creative Industries";
+          this.members[index].memberDepartment = "Faculty of Communication and Creative Industry";
           this.members[index].memberDepartmentCode = 'fcci';
         }
 
@@ -2390,7 +2390,7 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         if (this.members[index].memberUCID.charAt(3) == 'V' || this.members[index].memberUCID.charAt(3) == 'v') {
-          this.members[index].memberDepartment = "Faculty of Build Envionment";
+          this.members[index].memberDepartment = "Faculty of Build Environment";
           this.members[index].memberDepartmentCode = 'fobe';
         }
 

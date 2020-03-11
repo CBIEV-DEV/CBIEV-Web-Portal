@@ -79,7 +79,19 @@ class PRDeanHeadRecommendation extends Model
     {
         return PRDeanHeadRecommendation::create([
             'recommended_by' => $recommended_by,
-            'recommended_by' => $pr_status_tracking_id,
+            'pr_status_tracking_id' => $pr_status_tracking_id,
         ]);
+    }
+    /**
+     * 
+     */
+    public static function updateRecommendation($id, $comment, $is_recommended, $completed_at)
+    {
+        return PRDeanHeadRecommendation::where('id', $id)
+                                    -> update([
+                                        'comment' => $comment,
+                                        'is_recommended' => $is_recommended,
+                                        'completed_at' => $completed_at,
+                                    ]);
     }
 }

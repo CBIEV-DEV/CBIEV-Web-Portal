@@ -61,7 +61,7 @@ class ProjectRegistrationController extends Controller
         $teamLeader = $this->saveProjectTeamleader($request);
         // Save Project Registration
         $projectRegistration = ProjectRegistration::saveRegistration($request-> projectTitle, $request-> projectstate, $request-> prodSol, $request-> targetMark, $request-> projectCategory, $teamLeader->id);
-        $projectRegistration-> sync($teamLeader, false);// sync project registration with team leader
+        $projectRegistration-> projectMember()-> sync($teamLeader, false);// sync project registration with team leader
         // Save Project Participants
         $this->saveProjectParticipant($request, $projectRegistration);
         // Save Project Supervisor
@@ -71,8 +71,7 @@ class ProjectRegistrationController extends Controller
         // Send Notification Mail to Team Leader
         Mail::to([$teamLeader-> email, $teamLeader-> company_email])
             ->later(10, new SuccessProjectRegistrationNotification($teamLeader-> name, $projectRegistration-> project_title, $projectRegistration-> id));
-
-        return redirect(route('registration.redirect'));
+        // return redirect(route('registration.redirect'));
     }
     
     /**

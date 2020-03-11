@@ -56,7 +56,6 @@ class RecommendationController extends Controller
      */
     public function saveRecommendation(Request $request)
     {
-
         //validation 
         $statusID = null;
         try {
@@ -66,40 +65,28 @@ class RecommendationController extends Controller
             abort(401);
         }
         $recommendation_ = (int)$request-> recommendation;
-
         switch ($decryptedType) {
             case 1:
-                $prSupRec = PRSupervisorRecommendation::find($decryptedRecID);
-                $this-> checkRecommendationIsCompleted($prSupRec);
-                $prSupRec-> comment = $request-> recommendationComment;
-                $prSupRec-> is_recommended = $request-> recommendation;
-                $prSupRec-> is_completed = $this-> checkRecommendation($request-> recommendation);
-                $prSupRec-> completed_at =  Carbon::now();
-                $prSupRec-> save();
+                PRSupervisorRecommendation::updateRecommendation($decryptedRecID, $request-> recommendationComment, (int)$request-> recommendation, Carbon::now());
+                $prSupRec = PRSupervisorRecommendation::find($decryptedRecID); 
+                // $this-> checkRecommendationRecommendation($prSupRec);
                 $statusID = $prSupRec-> pr_status_tracking_id;
                 break;
             case 2:
+                PRDeanHeadRecommendation::updateRecommendation($decryptedRecID, $request-> recommendationComment, (int)$request-> recommendation, Carbon::now());
                 $prDeanHeadRec = PRDeanHeadRecommendation::find($decryptedRecID);
-                $this-> checkRecommendationIsCompleted($prDeanHeadRec);
-                $prDeanHeadRec-> comment = $request-> recommendationComment;
-                $prDeanHeadRec-> is_recommended = $request-> recommendation;
-                $prDeanHeadRec-> completed_at =  Carbon::now();
-                $prDeanHeadRec-> is_completed = $this-> checkRecommendation($request-> recommendation);
-                $prDeanHeadRec-> save();
+                // $this-> checkRecommendationRecommendation($prDeanHeadRec);
+
                 $statusID = $prDeanHeadRec-> pr_status_tracking_id;
                 break;
             case 3:
+                PRManagerRecommendation::updateRecommendation($decryptedRecID, $request-> recommendationComment, (int)$request-> recommendation, Carbon::now());
                 $prManager = PRManagerRecommendation::find($decryptedRecID);
-                $this-> checkRecommendationIsCompleted($prManager);
-                $prManager-> comment = $request-> recommendationComment;
-                $prManager-> is_recommended = $request-> recommendation;
-                $prManager-> is_completed = $this-> checkRecommendation($request-> recommendation);
-                $prManager-> completed_at = Carbon::now();
-                $prManager-> save();
                 $statusID = $prManager-> pr_status_tracking_id;
                 break;
         }
         
+        // Check if all recommendation per type is completed
         if ($recommendation_ == 1) {
             
             $this-> checkAllRecommendationCompletion($statusID, $decryptedType);
@@ -109,7 +96,7 @@ class RecommendationController extends Controller
             PRNotRecommended::dispatch($decryptedType, $decryptedRecID)->delay(now()->addSeconds(5));
 
         }
-        
+        return redirect(route('recommendation.success.redirect'));
     }
 
     /**
@@ -121,13 +108,13 @@ class RecommendationController extends Controller
         $statusTracking = ProjectRegistrationStatusTracking::find($statusID);
         switch ($type) {
             case 1:
-                $isComplete = $this-> checkRecIsCompleted($statusTracking-> supervisorRecommendation);
+                $isComplete = $this-> checkAllRecIsCompleted($statusTracking-> supervisorRecommendation);
                 break;
             case 2:
-                $isComplete = $this-> checkRecIsCompleted($statusTracking-> deanHeadRecommendation);
+                $isComplete = $this-> checkAllRecIsCompleted($statusTracking-> deanHeadRecommendation);
                 break;
             case 3:
-                $isComplete = $this-> checkRecIsCompleted($statusTracking-> managerRecommendation);
+                $isComplete = $this-> checkAllRecIsCompleted($statusTracking-> managerRecommendation);
                 break;
             default:
                 $isComplete = false;
@@ -159,29 +146,31 @@ class RecommendationController extends Controller
      * @param Integer $type
      * @param Integer $rec
      */
-    public function checkRecommendationIsCompleted($rec)
+    public function checkRecommendationRecommendation($rec)
     {
-        if ($rec-> is_completed === 1) {
+        if (!($rec-> is_recommended === 2)) {
             abort(401);
         }
     }
 
     /**
-     * check if each entry of project recommendation is completed
+     * check if each entry of project recommendation by type is completed
      * 
      * @param PRSupervisorProjectRecommendation/PRDeanHeadProjectRecommendation/PRManagerProjectRecommendation $recEntry
      * 
      * @return Boolean
      */
-    public function checkRecIsCompleted($recEntry)
+    public function checkAllRecIsCompleted($recEntry)
     {
+        $isCompleted = false;
         foreach ($recEntry as $rec) {
-            if ($rec-> is_completed === 1 || $rec-> is_completed === 2 ) {
-                return true;
+            if ($rec-> is_recommended === 2) {
+                $isCompleted = false;
             }else{
-                return  false;
+                $isCompleted =  true;
             }
         }
+        return $isCompleted;
     }
 
     /**
@@ -194,5 +183,13 @@ class RecommendationController extends Controller
         }else if($recommendation == 0){
             return 2;
         }
+    }
+
+    /**
+     * 
+     */
+    public function success()
+    {
+        return view('form.recommendation.redirect');
     }
 }

@@ -85,7 +85,7 @@ class CenterFacultiesTableSeeder extends Seeder
                 'code' => 'foas',
             ],
             [
-                'name' => 'Faculty of Build Enviroment',
+                'name' => 'Faculty of Build Environment',
                 'code' => 'fobe',
             ],
             [
