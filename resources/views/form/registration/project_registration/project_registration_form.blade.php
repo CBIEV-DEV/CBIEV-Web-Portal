@@ -31,17 +31,10 @@
                         Project Category
                     </label><span style="color:red"> *</span>
                     <select name="projectCategory" required="" id="projectCategory" class="form-control">
-                        <option value="1">TAR UC Postgraduate Students Registered with CPSR</option>
+                        <option value="1">R&D outcomes, Final Year Projects (FYPs), Capstone Projects (Undergraduate / Postgraduate), Industrial Research Collaborations, Developmental types of work</option>
                         <option value="2">TAR UC Academic Staff Supervising Postgraduate Students’ Research
                             Projects</option>
-                        <option value="3">TAR UC Academic Staff and Students Engaged in Academia-Industry
-                            Project</option>
-                        <option value="4">TAR UC Students engaged in the projects with potential for
-                            commercialization</option>
-                        <option value="5">TAR UC Students Registered for iSpark or Other Approved Programs</option>
-                        <option value="6">TAR UC Approved Mentors/Advisors for iSpark or Other Approved
-                            Programs</option>
-                        <option value="7">TAR UC / Alumni / Public Registered as Incubatee</option>
+                        <option value="3">TAR UC Alumni / Public with commercializable project</option>
                     </select>
                 </div>
             </div>
