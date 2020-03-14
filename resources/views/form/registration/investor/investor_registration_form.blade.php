@@ -11,23 +11,23 @@
             <form action="{{route('investor.registration.submit')}}" method="post">
                 @csrf
                 @component('components.registration.investor.form.company_info')
-                    
+
                 @endcomponent
                 @component('components.registration.investor.form.contact_person')
-                    
+
                 @endcomponent
                 @component('components.registration.investor.form.company_contact')
-                    
+
                 @endcomponent
                 @component('components.registration.investor.form.company_activity')
-                    
+
                 @endcomponent
                 @component('components.registration.investor.form.investor_declaration')
-                    
+
                 @endcomponent
-                
+
                 <button class="btn btn-primary" type="submit">Submit</button>
-            </form> 
+            </form>
         </div>
     </div>
-@endsection
+    @endsection
