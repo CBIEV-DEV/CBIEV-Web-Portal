@@ -76,17 +76,15 @@
                             <tr>
                                 <td>{{$supRec-> prSupervisor-> name}}</td>
                                 <td>
-                                    @switch($supRec-> is_completed)
+                                    @switch($supRec-> is_recommended)
                                         @case(0)
                                             Pending
                                             @break
                                         @case(1)
+                                            Not Recommended
+                                            @break
                                         @case(2)
-                                            @if ($supRec-> is_recommended === 0 && $supRec-> is_completed === 2)
-                                                Not Recommended
-                                            @elseif ($supRec-> is_recommended === 1 && $supRec-> is_completed === 1)
-                                                Recommended
-                                            @endif
+                                            Recommended
                                             @break
                                         @case(3)
                                             Auto Approved
@@ -105,17 +103,16 @@
                             <tr>
                                 <td>{{$deanHeadRec-> deanHead-> name}}</td>
                                 <td>
-                                    @switch($deanHeadRec-> is_completed)
+                                    @switch($deanHeadRec-> is_recommended)
                                         @case(0)
                                             Pending
                                             @break
                                         @case(1)
+                                            Recommended
+                                            @break
                                         @case(2)
-                                            @if ($deanHeadRec-> is_recommended === 1  && $deanHeadRec-> is_completed === 1)
-                                                Recommended
-                                            @elseif ($deanHeadRec-> is_recommended === 0  && $deanHeadRec-> is_completed === 2)
-                                                Not Recommended
-                                            @endif
+                                        Not Recommended
+                                            @break
                                         @case(3)
                                             Auto Approved
                                         @break
@@ -132,22 +129,20 @@
                             <tr>
                                 <td>{{$managerRec-> manager-> name}}</td>
                                 <td>
-                                    @switch($managerRec-> is_completed)
+                                    @switch($managerRec-> is_recommended)
                                         @case(0)
                                             Pending
                                             @break
                                         @case(1)
+                                        Not Recommended
+                                            @break
                                         @case(2)
-                                            @if ($managerRec-> is_recommended === 1  && $managerRec-> is_completed === 1)
-                                                Recommended
-                                            @elseif ($managerRec-> is_recommended === 0  && $managerRec-> is_completed === 2)
-                                                Not Recommended
-                                            @endif
+                                        Recommended
+                                            @break
                                         @case(3)
                                             Auto Approved
                                         @break
                                     @endswitch
-                                    
                                 </td>
                                 <td>{{$managerRec-> comment}}</td>
                                 <td>{{$managerRec-> completed_at}}</td>
