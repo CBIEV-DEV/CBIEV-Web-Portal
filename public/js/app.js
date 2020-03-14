@@ -2161,6 +2161,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2477,6 +2512,40 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3090,6 +3159,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3306,6 +3409,471 @@ __webpack_require__.r(__webpack_exports__);
   beforeCreate: function beforeCreate() {
     var _this2 = this;
 
+    axios.get('/get/department').then(function (response) {
+      return _this2.departmentOption = response.data;
+    });
+  },
+  watch: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/coworkingspace-member.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/coworkingspace-member.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      departmentOption: [],
+      member: [{
+        coworkingspacememberName: "",
+        coworkingspacememberUCID: "",
+        coworkingspacememberDepartment: "",
+        coworkingspacememberProgramme: "",
+        coworkingspacememberProgrammeList: [],
+        coworkingspacememberContact: "",
+        coworkingspacememberEmail: "",
+        coworkingspacememberDepartmentCode: "",
+        disablePrograme: false,
+        disableDeparCenFac: true
+      }],
+      placeholder: "",
+      participantIndex: 1
+    };
+  },
+  methods: {
+    initMember: function initMember(index) {
+      this.member[index].coworkingspacememberName = "";
+      this.member[index].coworkingspacememberUCID = "";
+      this.member[index].coworkingspacememberDepartment = "";
+      this.member[index].coworkingspacememberProgramme = "";
+      this.member[index].coworkingspacememberContact = "";
+      this.member[index].coworkingspacememberEmail = "";
+      this.member[index].coworkingspacememberDepartmentCode = "";
+      this.member[index].coworkingspacememberDepartmentCode = "";
+      this.member[index].disableDeparCenFac = true;
+      this.member[index].disablePrograme = false;
+    },
+    addcoworkingspacemember: function addcoworkingspacemember() {
+      if (this.participantIndex < 5) {
+        this.participantIndex++;
+        this.member.push({
+          coworkingspacememberName: "",
+          coworkingspacememberUCID: "",
+          coworkingspacememberDepartment: "",
+          coworkingspacememberProgramme: "",
+          coworkingspacememberContact: "",
+          coworkingspacememberEmail: "",
+          disableDeparCenFac: true,
+          disablePrograme: true
+        });
+      }
+    },
+    deletecoworkingspaceMember: function deletecoworkingspaceMember(index) {
+      this.participantIndex--;
+      this.member.splice(index, 1);
+    },
+    checkFaculty: function checkFaculty(index) {
+      var _this = this;
+
+      console.log(this.member[index].coworkingspacememberUCID.charAt(3));
+
+      if (this.member[index].coworkingspacememberUCID.length == 10) {
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "P" || this.member[index].coworkingspacememberUCID.charAt(3) == "p") {
+          this.member[index].coworkingspacememberDepartment = "Centre for Postgraduate Studies and Research";
+          this.member[index].coworkingspacememberDepartmentCode = "cpsr";
+        }
+
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "R" || this.member[index].coworkingspacememberUCID.charAt(3) == "r") {
+          this.member[index].coworkingspacememberDepartment = "Centre for Pre-University Studies";
+          this.member[index].coworkingspacememberDepartmentCode = "cpus";
+        }
+
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "B" || this.member[index].coworkingspacememberUCID.charAt(3) == "b") {
+          this.member[index].coworkingspacememberDepartment = "Facuty of Accounting, Finance and Business";
+          this.member[index].coworkingspacememberDepartmentCode = "fafb";
+        }
+
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "K" || this.member[index].coworkingspacememberUCID.charAt(3) == "k") {
+          this.member[index].coworkingspacememberDepartment = "Facuty of Communication and Creative Industries";
+          this.member[index].coworkingspacememberDepartmentCode = "fcci";
+        }
+
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "L" || this.member[index].coworkingspacememberUCID.charAt(3) == "l") {
+          this.member[index].coworkingspacememberDepartment = "Facuty of Applied Science";
+          this.member[index].coworkingspacememberDepartmentCode = "foas";
+        }
+
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "V" || this.member[index].coworkingspacememberUCID.charAt(3) == "v") {
+          this.member[index].coworkingspacememberDepartment = "Facuty of Build Envionment";
+          this.member[index].coworkingspacememberDepartmentCode = "fobe";
+        }
+
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "M" || this.member[index].coworkingspacememberUCID.charAt(3) == "m") {
+          this.member[index].coworkingspacememberDepartment = "Facuty of Computing and Information Technology";
+          this.member[index].coworkingspacememberDepartmentCode = "focs";
+        }
+
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "G" || this.member[index].coworkingspacememberUCID.charAt(3) == "g") {
+          this.member[index].coworkingspacememberDepartment = "Facuty of Engineering and Technology";
+          this.member[index].coworkingspacememberDepartmentCode = "foet";
+        }
+
+        if (this.member[index].coworkingspacememberUCID.charAt(3) == "J" || this.member[index].coworkingspacememberUCID.charAt(3) == "j") {
+          this.member[index].coworkingspacememberDepartment = "Facuty of Social Science and Humanities";
+          this.member[index].coworkingspacememberDepartmentCode = "fssh";
+        }
+      }
+
+      if (this.member[index].coworkingspacememberUCID.length == 10) {
+        console.log("test12"); // faculty = this.member[index].coworkingspacememberUCID.charAt(4)
+        // level = this.member[index].coworkingspacememberUCID.charAt(5)
+
+        axios.get("/get/programmes/" + this.member[index].coworkingspacememberUCID.charAt(3) + "/" + this.member[index].coworkingspacememberUCID.charAt(4)).then(function (response) {
+          return _this.member[index].coworkingspacememberProgrammeList = response.data;
+        });
+      } else {
+        this.member[index].coworkingspacememberProgrammeList = [];
+      }
+    }
+  },
+  before: function before() {
+    var _this2 = this;
+
+    axios.get("/get/department").then(function (response) {
+      return _this2.departmentOption = response.data;
+    });
+  },
+  watch: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/coworkingspace-teamleader.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/coworkingspace-teamleader.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      options: [],
+      departmentOption: [],
+      coworkingspaceleaderUCID: "",
+      coworkingspaceleaderDepartment: "",
+      coworkingspaceleaderProgramme: "",
+      coworkingspaceleaderDepartmentCode: "",
+      coworkingspaceleaderProgrammeList: [],
+      disableDeparCenFac: true,
+      disableUCID: false,
+      disablePrograme: false
+    };
+  },
+  methods: {
+    checkFaculty: function checkFaculty() {
+      var _this = this;
+
+      if (this.coworkingspaceleaderUCID.length >= 4) {
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'P' || this.coworkingspaceleaderUCID.charAt(3) == 'p') {
+          this.coworkingspaceleaderDepartment = "Centre for Postgraduate Studies and Research";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'R' || this.coworkingspaceleaderUCID.charAt(3) == 'r') {
+          this.coworkingspaceleaderDepartment = "Centre for Pre-University Studies";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'B' || this.coworkingspaceleaderUCID.charAt(3) == 'b') {
+          this.coworkingspaceleaderDepartment = "Facuty of Accounting, Finance and Business";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'K' || this.coworkingspaceleaderUCID.charAt(3) == 'k') {
+          this.coworkingspaceleaderDepartment = "Facuty of Communication and Creative Industries";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'L' || this.coworkingspaceleaderUCID.charAt(3) == 'l') {
+          this.coworkingspaceleaderDepartment = "Facuty of Applied Science";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'V' || this.coworkingspaceleaderUCID.charAt(3) == 'v') {
+          this.coworkingspaceleaderDepartment = "Facuty of Build Envionment";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'M' || this.coworkingspaceleaderUCID.charAt(3) == 'm') {
+          this.coworkingspaceleaderDepartment = "Facuty of Computing and Information Technology";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'G' || this.coworkingspaceleaderUCID.charAt(3) == 'g') {
+          this.coworkingspaceleaderDepartment = "Facuty of Engineering and Technology";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+
+        if (this.coworkingspaceleaderUCID.charAt(3) == 'J' || this.coworkingspaceleaderUCID.charAt(3) == 'j') {
+          this.coworkingspaceleaderDepartment = "Facuty of Social Science and Humanities";
+          this.coworkingspaceleaderDepartmentCode = 'focs';
+        }
+      } //continue here
+      //url = getprog + faculty id code & lvl code
+
+
+      if (this.coworkingspaceleaderUCID.length == 10) {
+        console.log('test12'); // faculty = this.leaderUCID.charAt(4)
+        // level = this.leaderUCID.charAt(5)
+
+        axios.get('/get/programmes/' + this.coworkingspaceleaderUCID.charAt(3) + '/' + this.coworkingspaceleaderUCID.charAt(4)).then(function (response) {
+          return _this.coworkingspaceleaderProgrammeList = response.data;
+        });
+      } else {
+        this.coworkingspaceleaderProgrammeList = [];
+      }
+    },
+    selectFaculty: function selectFaculty(selectedOption, id) {
+      if (this.coworkingspaceleaderType == 2) {
+        this.coworkingspaceleaderDepartmentCode = selectedOption;
+      }
+    }
+  },
+  beforeCreate: function beforeCreate() {
+    var _this2 = this;
+
+    axios.get('/get/programmes').then(function (response) {
+      return _this2.options = response.data;
+    });
     axios.get('/get/department').then(function (response) {
       return _this2.departmentOption = response.data;
     });
@@ -39515,6 +40083,9 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
+                  placeholder: "Insert your name",
+                  required: "",
+                  title: "Please insert your name",
                   name: "memberName[]",
                   id: "memberName",
                   readonly: member.disableName
@@ -39549,6 +40120,10 @@ var render = function() {
                 staticStyle: { "text-transform": "uppercase" },
                 attrs: {
                   type: "text",
+                  placeholder: "Example:xxxxxx-xx-xxxx, etc...",
+                  required: "",
+                  pattern: "[0-9]{6}[-][0-9]{2}[-][0-9]{4}",
+                  title: "Example:xxxxxx-xx-xxxx",
                   name: "memberIC[]",
                   id: "memberIC",
                   readonly: member.disableICNo
@@ -39586,6 +40161,10 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
+                  placeholder: "Example:012-xxxxxxx, etc...",
+                  required: "",
+                  pattern: "0[0-9]{2}[-][0-9]{7,}",
+                  title: "Example:012-xxxxxxx, etc....",
                   name: "memberContact[]",
                   id: "memberContact",
                   readonly: member.disableContact
@@ -39621,6 +40200,11 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "email",
+                  placeholder: "Example:abc123@gmail.com, etc...",
+                  required: "",
+                  pattern:
+                    "[a-z0-9._%+-]+@[a-z0-9.-]+\\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.net$",
+                  title: "Example:abc123@gmail.com, etc...",
                   name: "memberEmail[]",
                   id: "memberEmail",
                   readonly: member.disablePerEmail
@@ -39702,6 +40286,9 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
+                  placeholder: "Insert company name",
+                  required: "",
+                  title: "Please insert company name",
                   name: "memberCompanyName[]",
                   id: "memberCompanyName",
                   readonly: member.disableCompanyName
@@ -39737,6 +40324,10 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
+                  placeholder: "Insert company registration number",
+                  pattern: "[a-zA-Z0-9]+",
+                  required: "",
+                  title: "Please insert company registration number",
                   name: "memberCompanyRegNo[]",
                   id: "memberCompanyRegNo",
                   readonly: member.disableCompanyRegNo
@@ -39774,6 +40365,11 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
+                  placeholder: "Example:abc123@gmail.com, etc...",
+                  required: "",
+                  pattern:
+                    "[a-z0-9._%+-]+@[a-z0-9.-]+\\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.net$",
+                  title: "Example:abc123@gmail.com, etc...",
                   name: "memberCompanyEmail[]",
                   id: "memberCompanyEmail",
                   readonly: member.disableCompanyEmail
@@ -39809,6 +40405,10 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
+                  placeholder: "Insert asd position ",
+                  required: "",
+                  pattern: "[a-zA-Z]+",
+                  title: "Please insert member position",
                   name: "memberPosition[]",
                   id: "memberPosition",
                   readonly: member.disablePosition
@@ -39846,6 +40446,11 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
+                  required: "",
+                  placeholder: "Example: xxWMDxxxxx,MRxxxxxx, etc....",
+                  pattern: "[0-9]{2}[A-Z]{3}[0-9]{5}|[0-9]{4}|[A-Z]{2}[0-9]{6}",
+                  title: "Example: xxWMDxxxxx, etc....",
+                  requied: "",
                   name: "memberUCID[]",
                   id: "memberUCID",
                   readonly: member.disableUCID
@@ -40132,6 +40737,9 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
+                      placeholder: "Insert your name",
+                      required: "",
+                      title: "Please insert your name",
                       name: "supervisorName[]",
                       id: "supervisorName",
                       readonly: supervisor.disableName
@@ -40171,6 +40779,10 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
+                      placeholder: "Example:xxxxxx-xx-xxxx, etc...",
+                      required: "",
+                      pattern: "[0-9]{6}[-][0-9]{2}[-][0-9]{4}",
+                      title: "Example:xxxxxx-xx-xxxx",
                       name: "supervisorIC[]",
                       id: "supervisorIC",
                       readonly: supervisor.disableICNo
@@ -40212,6 +40824,10 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
+                      placeholder: "Example:012-xxxxxxx, etc...",
+                      required: "",
+                      pattern: "0[0-9]{2}[-][0-9]{7,}",
+                      title: "Example:012-xxxxxxx, etc....",
                       name: "supervisorContact[]",
                       id: "supervisorContact",
                       readonly: supervisor.disableContact
@@ -40251,6 +40867,11 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "email",
+                      placeholder: "Example:abc123@gmail.com, etc...",
+                      required: "",
+                      pattern:
+                        "[a-z0-9._%+-]+@[a-z0-9.-]+\\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.net$",
+                      title: "Example:abc123@gmail.com, etc...",
                       name: "supervisorEmail[]",
                       id: "supervisorEmail",
                       readonly: supervisor.disablePerEmail
@@ -40389,6 +41010,9 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
+                      placeholder: "Insert company name",
+                      required: "",
+                      title: "Please insert company name",
                       name: "supervisorCompanyName[]",
                       id: "supervisorCompanyName",
                       readonly: supervisor.disableCompanyName
@@ -40428,6 +41052,10 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
+                      placeholder: "Insert company registration number",
+                      required: "",
+                      pattern: "[a-zA-Z0-9]+",
+                      title: "Please insert company registration number",
                       name: "supervisorCompanyRegNo[]",
                       id: "supervisorCompanyRegNo",
                       readonly: supervisor.disableCompanyRegNo
@@ -40471,6 +41099,11 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
+                      placeholder: "Example:abc123@gmail.com, etc...",
+                      required: "",
+                      pattern:
+                        "[a-z0-9._%+-]+@[a-z0-9.-]+\\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.net$",
+                      title: "Example:abc123@gmail.com, etc...",
                       name: "supervisorCompanyEmail[]",
                       id: "supervisorCompanyEmail",
                       readonly: supervisor.disableCompanyEmail
@@ -40510,6 +41143,10 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
+                      placeholder: "Insert supervisor position ",
+                      required: "",
+                      pattern: "[a-zA-Z]+",
+                      title: "Please insert supervisor position",
                       name: "supervisorPosition[]",
                       id: "supervisorPosition",
                       list: "position",
@@ -40560,6 +41197,11 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "text",
+                      placeholder: "Example: xxWMDxxxxx,MRxxxxxx etc....",
+                      pattern:
+                        "[0-9]{2}[A-Z]{3}[0-9]{5}|[0-9]{4}|[A-Z]{2}[0-9]{6}",
+                      title: "Example: xxWMDxxxxx, etc....",
+                      required: "",
                       id: "supervisorUCID",
                       name: "supervisorUCID[]",
                       readonly: supervisor.disableUCID
@@ -40752,6 +41394,9 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
+              placeholder: "Insert your name",
+              required: "",
+              title: "Please insert your name",
               name: "leaderName",
               id: "leaderName",
               readonly: _vm.disableName
@@ -40786,6 +41431,10 @@ var render = function() {
             staticStyle: { "text-transform": "uppercase" },
             attrs: {
               type: "text",
+              placeholder: "Example:xxxxxx-xx-xxxx, etc...",
+              required: "",
+              pattern: "[0-9]{6}[-][0-9]{2}[-][0-9]{4}",
+              title: "Example:xxxxxx-xx-xxxx",
               name: "leaderIC",
               id: "leaderIC",
               readonly: _vm.disableICNo
@@ -40823,6 +41472,10 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
+              placeholder: "Example:012-xxxxxxx, etc...",
+              required: "",
+              pattern: "0[0-9]{2}[-][0-9]{7,}",
+              title: "Example:012-xxxxxxx, etc....",
               name: "leaderContact",
               id: "leaderContact",
               readonly: _vm.disableContact
@@ -40858,6 +41511,11 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
+              placeholder: "Example:abc123@gmail.com, etc...",
+              required: "",
+              pattern:
+                "[a-z0-9._%+-]+@[a-z0-9.-]+\\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.net$",
+              title: "Example:abc123@gmail.com, etc...",
               name: "leaderEmail",
               id: "leaderEmail",
               readonly: _vm.disablePerEmail
@@ -40973,6 +41631,9 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
+              placeholder: "Insert company name",
+              required: "",
+              title: "Please insert company name",
               name: "leaderCompanyName",
               id: "leaderCompanyName",
               readonly: _vm.disableCompanyName
@@ -41008,6 +41669,10 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
+              placeholder: "Insert company registration number",
+              required: "",
+              pattern: "[a-zA-Z0-9]+",
+              title: "Please insert company registration number",
               name: "leaderCompanyRegNo",
               id: "leaderCompanyRegNo",
               readonly: _vm.disableCompanyRegNo
@@ -41045,6 +41710,11 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
+              placeholder: "Example:abc123@gmail.com, etc...",
+              required: "",
+              pattern:
+                "[a-z0-9._%+-]+@[a-z0-9.-]+\\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.net$",
+              title: "Example:abc123@gmail.com, etc...",
               name: "leaderCompanyEmail",
               id: "leaderCompanyEmail",
               readonly: _vm.disableCompanyEmail
@@ -41080,6 +41750,10 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
+              placeholder: "Insert leader position ",
+              required: "",
+              pattern: "[a-zA-Z]+",
+              title: "Please insert leader position",
               name: "leaderPosition",
               id: "leaderPosition",
               readonly: _vm.disablePosition
@@ -41117,6 +41791,10 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
+              placeholder: "Example: xxWMDxxxxx,MRxxxxxx, etc....",
+              pattern: "[0-9]{2}[A-Z]{3}[0-9]{5}|[0-9]{4}|[A-Z]{2}[0-9]{6}",
+              title: "Example: xxWMDxxxxx, etc....",
+              required: "",
               name: "leaderUCID",
               id: "leaderUCID",
               readonly: _vm.disableUCID
@@ -41237,6 +41915,574 @@ var render = function() {
                 return
               }
               _vm.leaderProgramme = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("br")
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [_c("small", [_vm._v("Only for TAR UC Student")])])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/coworkingspace-member.vue?vue&type=template&id=67582acb&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/coworkingspace-member.vue?vue&type=template&id=67582acb& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "btn btn-info",
+          attrs: { type: "button", value: "Add Member" },
+          on: {
+            click: function($event) {
+              return _vm.addcoworkingspacemember()
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.member, function(member, index) {
+        return _c("div", { key: (member, index) }, [
+          _c("input", {
+            attrs: { type: "hidden", name: "participantIndex" },
+            domProps: { value: _vm.participantIndex }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", [
+                _c("strong", [_vm._v("Member No: " + _vm._s(index + 1))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-danger",
+                  attrs: { type: "button", title: "Remove Member" },
+                  on: {
+                    click: function($event) {
+                      return _vm.deletecoworkingspaceMember()
+                    }
+                  }
+                },
+                [_vm._v("X")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("label", { attrs: { for: "coworkingspacememberName" } }, [
+                _vm._v("Member Name")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: member.coworkingspacememberName,
+                    expression: "member.coworkingspacememberName"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Insert your name",
+                  required: "",
+                  title: "Please insert your name",
+                  name: "memberName[]",
+                  id: "coworkingspacememberName",
+                  readonly: member.disableName
+                },
+                domProps: { value: member.coworkingspacememberName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      member,
+                      "coworkingspacememberName",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("label", { attrs: { for: "coworkingspacememberUCID" } }, [
+                _vm._v("Student ID")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: member.coworkingspacememberUCID,
+                    expression: "member.coworkingspacememberUCID"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "coworkingspacememberUCID[]",
+                  required: "",
+                  placeholder: "Example: xxWMDxxxxx, etc....",
+                  pattern: "[0-9]{2}[A-Z]{3}[0-9]{5}|[0-9]{4}",
+                  title: "Example: xxWMDxxxxx, etc....",
+                  id: "coworkingspacememberUCID",
+                  readonly: member.disableUCID
+                },
+                domProps: { value: member.coworkingspacememberUCID },
+                on: {
+                  change: function($event) {
+                    return _vm.checkFaculty(index)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      member,
+                      "coworkingspacememberUCID",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-6" },
+            [
+              _c(
+                "label",
+                { attrs: { for: "coworkingspacememberDepartment" } },
+                [_vm._v("Faculty/Center/Faculty")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+              _vm._v(" "),
+              _c(
+                "multiselect",
+                {
+                  attrs: {
+                    id: "coworkingspacememberDepartment",
+                    options: _vm.departmentOption,
+                    disabled: member.disableDeparCenFac
+                  },
+                  model: {
+                    value: member.coworkingspacememberDepartment,
+                    callback: function($$v) {
+                      _vm.$set(member, "coworkingspacememberDepartment", $$v)
+                    },
+                    expression: "member.coworkingspacememberDepartment"
+                  }
+                },
+                [_vm._v('@select="selectFaculty(index)">')]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: member.coworkingspacememberDepartment,
+                    expression: "member.coworkingspacememberDepartment"
+                  }
+                ],
+                attrs: {
+                  type: "hidden",
+                  name: "coworkingspacememberDepartment[]"
+                },
+                domProps: { value: member.coworkingspacememberDepartment },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      member,
+                      "coworkingspacememberDepartment",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c(
+              "div",
+              { staticClass: "col-md-6" },
+              [
+                _c(
+                  "label",
+                  { attrs: { for: "coworkingspacememberProgramme" } },
+                  [_vm._v("Programme Study")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+                _vm._v(" "),
+                _c("multiselect", {
+                  attrs: {
+                    id: "coworkingspacememberProgramme",
+                    name: "coworkingspacememberProgramme[]",
+                    options: member.coworkingspacememberProgrammeList,
+                    disabled: member.disablePrograme
+                  },
+                  model: {
+                    value: member.coworkingspacememberProgramme,
+                    callback: function($$v) {
+                      _vm.$set(member, "coworkingspacememberProgramme", $$v)
+                    },
+                    expression: "member.coworkingspacememberProgramme"
+                  }
+                }),
+                _vm._v(" "),
+                _c("span", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: member.coworkingspacememberProgramme,
+                        expression: "member.coworkingspacememberProgramme"
+                      }
+                    ],
+                    attrs: {
+                      type: "hidden",
+                      name: "coworkingspacememberProgramme[]",
+                      id: "coworkingspacememberProgramme"
+                    },
+                    domProps: { value: member.coworkingspacememberProgramme },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          member,
+                          "coworkingspacememberProgramme",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("small", [_vm._v("Only for TAR UC Student")])
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("label", { attrs: { for: "coworkingspacememberContact" } }, [
+                _vm._v("Contact No(HP)")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: member.coworkingspacememberContact,
+                    expression: "member.coworkingspacememberContact"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Example: 012-xxxxxxx, etc....",
+                  required: "",
+                  pattern: "0[0-9]{2}[-][0-9]{7,}",
+                  title: "Example: 012-xxxxxxx, etc....",
+                  name: "coworkingspacememberContact[]",
+                  id: "coworkingspacememberContact",
+                  readonly: member.disableContact
+                },
+                domProps: { value: member.coworkingspacememberContact },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      member,
+                      "coworkingspacememberContact",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("label", { attrs: { for: "coworkingspacememberEmail" } }, [
+              _vm._v("E-mail")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: member.coworkingspacememberEmail,
+                  expression: "member.coworkingspacememberEmail"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "email",
+                placeholder: "Example: abc123@gmail.com, etc...",
+                required: "",
+                pattern:
+                  "[a-z0-9._%+-]+@[a-z0-9.-]+\\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\\.net$",
+                title: "Example: 05-598 xxxx, 03-2xxx xxxx, etc....",
+                name: "coworkingspacememberEmail[]",
+                id: "coworkingspacememberEmail",
+                readonly: member.disablePerEmail
+              },
+              domProps: { value: member.coworkingspacememberEmail },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    member,
+                    "coworkingspacememberEmail",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ])
+      }),
+      _vm._v(" "),
+      _c("br")
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/coworkingspace-teamleader.vue?vue&type=template&id=dab65952&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/coworkingspace-teamleader.vue?vue&type=template&id=dab65952& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "app" }, [
+    _c("div", [
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "coworkingspaceleaderUCID" } }, [
+            _vm._v("Student ID")
+          ]),
+          _vm._v(" "),
+          _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.coworkingspaceleaderUCID,
+                expression: "coworkingspaceleaderUCID"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              required: "",
+              placeholder: "Example: xxWMDxxxxx, etc....",
+              pattern: "[0-9]{2}[A-Z]{3}[0-9]{5}|[0-9]{4}",
+              title: "Example: xxWMDxxxxx, etc....",
+              name: "coworkingspaceleaderUCID",
+              id: "coworkingspaceleaderUCID",
+              readonly: _vm.disableUCID
+            },
+            domProps: { value: _vm.coworkingspaceleaderUCID },
+            on: {
+              keyup: function($event) {
+                return _vm.checkFaculty()
+              },
+              change: function($event) {
+                return _vm.checkFaculty()
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.coworkingspaceleaderUCID = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group col-md-6" },
+          [
+            _c("label", { attrs: { for: "coworkingspaceleaderDepartment" } }, [
+              _vm._v("Faculty")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+            _vm._v(" "),
+            _c("multiselect", {
+              attrs: {
+                id: "coworkingspaceleaderDepartment",
+                options: _vm.departmentOption,
+                disabled: _vm.disableDeparCenFac
+              },
+              on: { select: _vm.selectFaculty },
+              model: {
+                value: _vm.coworkingspaceleaderDepartment,
+                callback: function($$v) {
+                  _vm.coworkingspaceleaderDepartment = $$v
+                },
+                expression: "coworkingspaceleaderDepartment"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.coworkingspaceleaderDepartmentCode,
+              expression: "coworkingspaceleaderDepartmentCode"
+            }
+          ],
+          attrs: { type: "hidden", name: "coworkingspaceleaderDepartment" },
+          domProps: { value: _vm.coworkingspaceleaderDepartmentCode },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.coworkingspaceleaderDepartmentCode = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-row" }, [
+        _c(
+          "div",
+          { staticClass: "form-group col-md-6" },
+          [
+            _c("label", { attrs: { for: "coworkingspaceleaderProgramme" } }, [
+              _vm._v("Programme Study")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+            _vm._v(" "),
+            _c("multiselect", {
+              attrs: {
+                options: _vm.coworkingspaceleaderProgrammeList,
+                disabled: _vm.disablePrograme
+              },
+              model: {
+                value: _vm.coworkingspaceleaderProgramme,
+                callback: function($$v) {
+                  _vm.coworkingspaceleaderProgramme = $$v
+                },
+                expression: "coworkingspaceleaderProgramme"
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.coworkingspaceleaderProgramme,
+              expression: "coworkingspaceleaderProgramme"
+            }
+          ],
+          attrs: { type: "hidden", name: "coworkingspaceleaderProgramme" },
+          domProps: { value: _vm.coworkingspaceleaderProgramme },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.coworkingspaceleaderProgramme = $event.target.value
             }
           }
         })
@@ -53487,6 +54733,8 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('member', __webpack_require__(/*! ./components/Member.vue */ "./resources/js/components/Member.vue")["default"]);
 Vue.component('supervisor', __webpack_require__(/*! ./components/Supervisor.vue */ "./resources/js/components/Supervisor.vue")["default"]);
 Vue.component('team-leader', __webpack_require__(/*! ./components/TeamLeader.vue */ "./resources/js/components/TeamLeader.vue")["default"]);
+Vue.component('coworkingspace-member', __webpack_require__(/*! ./components/coworkingspace-member.vue */ "./resources/js/components/coworkingspace-member.vue")["default"]);
+Vue.component('coworkingspace-teamleader', __webpack_require__(/*! ./components/coworkingspace-teamleader.vue */ "./resources/js/components/coworkingspace-teamleader.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -53923,6 +55171,148 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamLeader_vue_vue_type_template_id_0b58d371___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamLeader_vue_vue_type_template_id_0b58d371___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/coworkingspace-member.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/coworkingspace-member.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _coworkingspace_member_vue_vue_type_template_id_67582acb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coworkingspace-member.vue?vue&type=template&id=67582acb& */ "./resources/js/components/coworkingspace-member.vue?vue&type=template&id=67582acb&");
+/* harmony import */ var _coworkingspace_member_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./coworkingspace-member.vue?vue&type=script&lang=js& */ "./resources/js/components/coworkingspace-member.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var vue_multiselect_dist_vue_multiselect_min_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css& */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _coworkingspace_member_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _coworkingspace_member_vue_vue_type_template_id_67582acb___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _coworkingspace_member_vue_vue_type_template_id_67582acb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/coworkingspace-member.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/coworkingspace-member.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/coworkingspace-member.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_member_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./coworkingspace-member.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/coworkingspace-member.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_member_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/coworkingspace-member.vue?vue&type=template&id=67582acb&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/coworkingspace-member.vue?vue&type=template&id=67582acb& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_member_vue_vue_type_template_id_67582acb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./coworkingspace-member.vue?vue&type=template&id=67582acb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/coworkingspace-member.vue?vue&type=template&id=67582acb&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_member_vue_vue_type_template_id_67582acb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_member_vue_vue_type_template_id_67582acb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/coworkingspace-teamleader.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/coworkingspace-teamleader.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _coworkingspace_teamleader_vue_vue_type_template_id_dab65952___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coworkingspace-teamleader.vue?vue&type=template&id=dab65952& */ "./resources/js/components/coworkingspace-teamleader.vue?vue&type=template&id=dab65952&");
+/* harmony import */ var _coworkingspace_teamleader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./coworkingspace-teamleader.vue?vue&type=script&lang=js& */ "./resources/js/components/coworkingspace-teamleader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var vue_multiselect_dist_vue_multiselect_min_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css& */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _coworkingspace_teamleader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _coworkingspace_teamleader_vue_vue_type_template_id_dab65952___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _coworkingspace_teamleader_vue_vue_type_template_id_dab65952___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/coworkingspace-teamleader.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/coworkingspace-teamleader.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/coworkingspace-teamleader.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_teamleader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./coworkingspace-teamleader.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/coworkingspace-teamleader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_teamleader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/coworkingspace-teamleader.vue?vue&type=template&id=dab65952&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/coworkingspace-teamleader.vue?vue&type=template&id=dab65952& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_teamleader_vue_vue_type_template_id_dab65952___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./coworkingspace-teamleader.vue?vue&type=template&id=dab65952& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/coworkingspace-teamleader.vue?vue&type=template&id=dab65952&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_teamleader_vue_vue_type_template_id_dab65952___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_coworkingspace_teamleader_vue_vue_type_template_id_dab65952___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

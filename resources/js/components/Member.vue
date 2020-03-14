@@ -45,6 +45,9 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Insert your name" 
+            required="" 
+            title="Please insert your name"
             name="memberName[]"
             id="memberName"
             :readonly="member.disableName"
@@ -57,6 +60,10 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Example:xxxxxx-xx-xxxx, etc..." 
+            required="" 
+            pattern="[0-9]{6}[-][0-9]{2}[-][0-9]{4}" 
+            title="Example:xxxxxx-xx-xxxx"
             name="memberIC[]"
             id="memberIC"
             style="text-transform:uppercase"
@@ -73,6 +80,10 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Example:012-xxxxxxx, etc..." 
+            required="" 
+            pattern="0[0-9]{2}[-][0-9]{7,}" 
+            title="Example:012-xxxxxxx, etc...."
             name="memberContact[]"
             id="memberContact"
             :readonly="member.disableContact"
@@ -84,6 +95,10 @@
           <span style="color:red">*</span>
           <input
             type="email"
+            placeholder="Example:abc123@gmail.com, etc..." 
+            required="" 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\.net$" 
+            title="Example:abc123@gmail.com, etc..."
             name="memberEmail[]"
             id="memberEmail"
             class="form-control"
@@ -115,6 +130,9 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Insert company name"
+            required=""
+            title="Please insert company name"
             name="memberCompanyName[]"
             id="memberCompanyName"
             v-model="member.memberCompanyName"
@@ -127,6 +145,10 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Insert company registration number"
+            pattern="[a-zA-Z0-9]+"
+            required=""
+            title="Please insert company registration number"
             name="memberCompanyRegNo[]"
             id="memberCompanyRegNo"
             :readonly="member.disableCompanyRegNo"
@@ -141,6 +163,10 @@
           <input 
           class="form-control"
           type="text" 
+          placeholder="Example:abc123@gmail.com, etc..." 
+          required="" 
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\.net$" 
+          title="Example:abc123@gmail.com, etc..."
           name="memberCompanyEmail[]"
           id="memberCompanyEmail"
           :readonly="member.disableCompanyEmail"
@@ -152,6 +178,10 @@
           <input 
           class="form-control" 
           type="text" 
+          placeholder="Insert asd position "
+          required=""
+          pattern="[a-zA-Z]+"
+          title="Please insert member position"
           name="memberPosition[]"
           id="memberPosition"
           :readonly="member.disablePosition"
@@ -165,6 +195,11 @@
           <span style="color:red">*</span>
           <input 
             type="text" 
+            required=""
+            placeholder="Example: xxWMDxxxxx,MRxxxxxx, etc...."
+            pattern="[0-9]{2}[A-Z]{3}[0-9]{5}|[0-9]{4}|[A-Z]{2}[0-9]{6}"
+            title="Example: xxWMDxxxxx, etc...."
+            requied=""
             class="form-control"
             name="memberUCID[]"
             id="memberUCID"  

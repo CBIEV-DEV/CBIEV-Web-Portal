@@ -25,6 +25,9 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Insert your name" 
+            required="" 
+            title="Please insert your name"
             name="leaderName"
             id="leaderName"
             :readonly="disableName"
@@ -37,6 +40,10 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Example:xxxxxx-xx-xxxx, etc..." 
+            required="" 
+            pattern="[0-9]{6}[-][0-9]{2}[-][0-9]{4}" 
+            title="Example:xxxxxx-xx-xxxx"
             name="leaderIC"
             id="leaderIC"
             style="text-transform:uppercase"
@@ -53,6 +60,10 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Example:012-xxxxxxx, etc..." 
+            required="" 
+            pattern="0[0-9]{2}[-][0-9]{7,}" 
+            title="Example:012-xxxxxxx, etc...."
             name="leaderContact"
             id="leaderContact"
             :readonly="disableContact"
@@ -64,6 +75,10 @@
           <span style="color:red">*</span>
           <input
             type="text"
+            placeholder="Example:abc123@gmail.com, etc..." 
+            required="" 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\.net$" 
+            title="Example:abc123@gmail.com, etc..."
             name="leaderEmail"
             id="leaderEmail"
             class="form-control"
@@ -97,6 +112,9 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Insert company name"
+            required=""
+            title="Please insert company name"
             name="leaderCompanyName"
             id="leaderCompanyName"
             v-model="leaderCompanyName"
@@ -109,6 +127,10 @@
           <input
             class="form-control"
             type="text"
+            placeholder="Insert company registration number"
+            required=""
+            pattern="[a-zA-Z0-9]+"
+            title="Please insert company registration number"
             name="leaderCompanyRegNo"
             id="leaderCompanyRegNo"
             :readonly="disableCompanyRegNo"
@@ -123,6 +145,10 @@
           <input 
           class="form-control"
           type="text" 
+          placeholder="Example:abc123@gmail.com, etc..." 
+          required="" 
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\.net$" 
+          title="Example:abc123@gmail.com, etc..."
           name="leaderCompanyEmail"
           id="leaderCompanyEmail"
           :readonly="disableCompanyEmail"
@@ -134,6 +160,10 @@
           <input 
           class="form-control" 
           type="text" 
+          placeholder="Insert leader position "
+          required=""
+          pattern="[a-zA-Z]+"
+          title="Please insert leader position"
           name="leaderPosition"
           id="leaderPosition"
           :readonly="disablePosition"
@@ -147,6 +177,10 @@
           <span style="color:red">*</span>
           <input 
             type="text" 
+            placeholder="Example: xxWMDxxxxx,MRxxxxxx, etc...."
+            pattern="[0-9]{2}[A-Z]{3}[0-9]{5}|[0-9]{4}|[A-Z]{2}[0-9]{6}"
+            title="Example: xxWMDxxxxx, etc...."
+            required=""
             class="form-control"
             name="leaderUCID"
             id="leaderUCID"  

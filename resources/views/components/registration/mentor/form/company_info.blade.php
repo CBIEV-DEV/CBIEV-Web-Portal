@@ -15,7 +15,7 @@
 <div class="form-group row">
     <label for="mentorCompanyRegNo" class="col-sm-2 col-form-label">Company Registration No</label>
     <div class="col-sm-10">
-        <input type="text" name="" placeholder="Insert company registration number" id="mentorCompanyRegNo" class="form-control" :disabled="mentorComponyRegNoDisable" required=""  v-model="mentorCompanyRegNo">
+        <input type="text" name="" pattern="[a-zA-Z0-9]+" placeholder="Insert company registration number" id="mentorCompanyRegNo" class="form-control" :disabled="mentorComponyRegNoDisable" required=""  v-model="mentorCompanyRegNo">
         <input type="hidden" name="mentorCompanyRegNo" v-model="mentorCompanyRegNo">
     </div>
 </div>

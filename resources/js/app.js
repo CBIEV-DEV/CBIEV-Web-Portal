@@ -33,6 +33,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('member', require('./components/Member.vue').default);
 Vue.component('supervisor', require('./components/Supervisor.vue').default);
 Vue.component('team-leader', require('./components/TeamLeader.vue').default);
+Vue.component('coworkingspace-member', require('./components/coworkingspace-member.vue').default);
+Vue.component('coworkingspace-teamleader',require('./components/coworkingspace-teamleader.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

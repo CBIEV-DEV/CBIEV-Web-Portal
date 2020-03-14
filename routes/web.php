@@ -106,6 +106,11 @@ Route::prefix('isparkmentor')->group(function(){
     });
     // success
     Route::get('success','ProjectRegistrationController@success')->name('registration.redirect');
+
+    Route::prefix('coworkingspace')->group(function(){
+        Route::get('', 'CWSpaceRegistrationControllerController@showRegistrationForm')->name('coworkingspace.registration.show');
+        Route::post('', 'CWSpaceRegistrationControllerController@saveRegistration')->name('coworkingspace.registration.submit');
+    });
 });
 
 /**
@@ -153,6 +158,58 @@ Route::prefix('recommendation')->group(function(){
     // success
     Route::get('success','RecommendationController@success')->name('recommendation.success.redirect');
 });
+Route::get('/tomail', 'ProjectRegistrationStatusTrackingController@mailTo');
+Route::get('/mentor', function(){
+    return view('form.registration.mentor.mentor_registration_form');
+});
+Route::get('/investor', function(){
+    return view('form.registration.investor.investor_registration_form');
+});
+
+Route::get('/coworkingspace', function(){
+    return view('form.registration.co_working_space.coworkingspace');
+});
+
+Route::get('/test', function(){
+    $centerFaculty = CenterFaculty::all()-> only('id', 'name', 'code');
+
+    foreach ($centerFaculty as $name => $id) {
+        echo $name . ' has id ' . $id . "\r\n";
+        echo "<br>";
+    }
+    return dd($centerFaculty);
+});
+Route::get('/test2', function(){
+    return view('form.registration.investor.investor_registration_form');
+});
+
+// project
+Route::get('/project/rec/{type}/{recID}','RecommendationController@projectRecommendation')->name('project.recommendation.get');
+Route::post('/project/rec/post','RecommendationController@saveRecommendation')->name('project.recommendation.post');
+
+Route::get('/project/rec/manager/{type}/{recID}','RecommendationController@projectRecommendation')->name('project.recommendation.manager.get');
+Route::post('/project/rec/manager/post','RecommendationController@saveRecommendation')->name('project.recommendation.manager.post');
+
+Route::get('/project/app/director/{recID}','PRDirectorApprovalController@showApprovalForm')->name('project.approval.get');
+Route::post('/project/app/director/post','PRDirectorApprovalController@saveApproval')->name('project.approval.post');
+// mentor
+Route::get('/mentor/rec/{recID}','MRDeanHeadRecommendationController@showRecommendationForm')->name('mentor.recommendation.dean.head.get');
+Route::post('/mentor/rec/post','MRDeanHeadRecommendationController@saveRecommendation')->name('mentor.recommendation.dean.head.post');
+
+Route::get('/mentor/rec/manager/{recID}','MRManagerRecommendationController@showRecommendationForm')->name('mentor.recommendation.manager.get');
+Route::post('/mentor/rec/manager/post','MRManagerRecommendationController@saveRecommendation')->name('mentor.recommendation.manager.post');
+
+Route::get('/mentor/app/director/{recID}','MRDirectorApprovalController@showApprovalForm')->name('mentor.approval.get');
+Route::post('/mentor/app/director/post','MRDirectorApprovalController@saveApproval')->name('mentor.approval.post');
+// investor
+Route::get('/investorRegis/rec/manager/{recID}','IRManagerRecommendationController@showRecommendationForm')->name('investor.recommendation.manager.get');
+Route::post('/investorRegis/rec/manager/post','IRManagerRecommendationController@saveRecommendation')->name('investor.recommendation.manager.post');
+
+Route::get('/investorRegis/app/director/{appID}','IRDirectorApprovalController@showApprovalForm')->name('investor.approval.get');
+Route::post('/investorRegis/app/director/post','IRDirectorApprovalController@saveApproval')->name('investor.approval.post');
+
+
+
 Route::prefix('isparkproject')->group(function(){   
     Route::get('/fileList/{id}','ProjectUploadLogController@viewFile')->name('project.file.list');
     Route::post('/fileUpload/{id}', 'ProjectUploadLogController@storeUpload')->name('project.file.upload');

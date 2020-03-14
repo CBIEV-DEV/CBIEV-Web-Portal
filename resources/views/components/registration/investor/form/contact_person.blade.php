@@ -10,6 +10,6 @@
 <div class="form-group row">
     <label for="companyContactPersonPosition" class="col-sm-3 col-form-label">Contact Person's Position<span style="color:red">*</span></label>
     <div class="col-sm-9">
-        <input type="text" name="companyContactPersonPosition" placeholder="Insert contact person position" required="" id="companyContactPersonPosition" class="form-control">
+        <input type="text" name="companyContactPersonPosition" placeholder="Insert contact person position" required="" pattern="[a-zA-Z]+" id="companyContactPersonPosition" class="form-control">
     </div>
 </div>

@@ -22,7 +22,7 @@
 <div class="form-group row">
     <label for="mentorEmail" class="col-sm-2 col-form-label">Email<span style="color:red">*</span></label>
     <div class="col-sm-10">
-        <input type="text" name="mentorEmail" placeholder="Example:ABC123@gmail.com, etc..." required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$" title="Example:Example:ABC123@gmail.com" id="mentorEmail" class="form-control">
+        <input type="text" name="mentorEmail" placeholder="Example:abc123@gmail.com, etc..." required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$|[a-z0-9._%+-]+@[a-z0-9.-]+\.my$|[a-z0-9._%+-]+@[a-z0-9.-]+\.net$" title="Example:abc123@gmail.com" id="mentorEmail" class="form-control">
     </div>
 </div>
 <div class="form-group row">
