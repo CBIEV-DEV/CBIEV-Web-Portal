@@ -185,7 +185,7 @@
           v-model="member.memberDepartment"
           @select="selectFaculty(index)"></multiselect>
 
-          <input type="hidden" name="memberDepartmentCode[]" v-model="member.memberDepartment">
+          <input type="hidden" name="memberDepartment[]" v-model="member.memberDepartment">
         </div>
        
       </div>
@@ -453,39 +453,39 @@ export default {
     checkFaculty(index){
       if(this.members[index].memberUCID.length == 10 && this.members[index].memberType == 1){
         if (this.members[index].memberUCID.charAt(3) == 'P' || this.members[index].memberUCID.charAt(3) == 'p') {
-          this.members[index].memberDepartment= "Centre for Postgraduate Studies and Research";
+          this.members[index].memberDepartment= "Center of Postgraduete Studies and Research";
           this.members[index].memberDepartmentCode = 'cpsr'
         }
         if (this.members[index].memberUCID.charAt(3) == 'R' || this.members[index].memberUCID.charAt(3) == 'r') {
-          this.members[index].memberDepartment= "Centre for Pre-University Studies";
+          this.members[index].memberDepartment= "Center of Pre-University Studies";
           this.members[index].memberDepartmentCode = 'cpus'
         }
         if (this.members[index].memberUCID.charAt(3) == 'B' || this.members[index].memberUCID.charAt(3) == 'b') {
-          this.members[index].memberDepartment= "Facuty of Accounting, Finance and Business";
+          this.members[index].memberDepartment= "Faculty of Accountancy, Finance and Business";
           this.members[index].memberDepartmentCode = 'fafb'
         }
         if (this.members[index].memberUCID.charAt(3) == 'K' || this.members[index].memberUCID.charAt(3) == 'k') {
-          this.members[index].memberDepartment= "Facuty of Communication and Creative Industries";
+          this.members[index].memberDepartment= "Faculty of Communication and Creative Industry";
           this.members[index].memberDepartmentCode = 'fcci'
         }
         if (this.members[index].memberUCID.charAt(3) == 'L' || this.members[index].memberUCID.charAt(3) == 'l') {
-          this.members[index].memberDepartment= "Facuty of Applied Science";
+          this.members[index].memberDepartment= "Faculty of Applied Science";
           this.members[index].memberDepartmentCode = 'foas'
         }
         if (this.members[index].memberUCID.charAt(3) == 'V' || this.members[index].memberUCID.charAt(3) == 'v') {
-          this.members[index].memberDepartment= "Facuty of Build Envionment";
+          this.members[index].memberDepartment= "Faculty of Build Environment";
           this.members[index].memberDepartmentCode = 'fobe'
         }
         if (this.members[index].memberUCID.charAt(3) == 'M' || this.members[index].memberUCID.charAt(3) == 'm') {
-          this.members[index].memberDepartment= "Facuty of Computing and Information Technology";
+          this.members[index].memberDepartment= "Faculty of Computing and Information Technology";
           this.members[index].memberDepartmentCode = 'focs'
         }
         if (this.members[index].memberUCID.charAt(3) == 'G' || this.members[index].memberUCID.charAt(3) == 'g') {
-          this.members[index].memberDepartment= "Facuty of Engineering and Technology";
+          this.members[index].memberDepartment= "Faculty of Engineering and Technology";
           this.members[index].memberDepartmentCode = 'foet'
         }
         if (this.members[index].memberUCID.charAt(3) == 'J' || this.members[index].memberUCID.charAt(3) == 'j') {
-          this.members[index].memberDepartment= "Facuty of Social Science and Humanities";
+          this.members[index].memberDepartment= "Faculty of Social Science and Humanities";
           this.members[index].memberDepartmentCode = 'fssh'
         }
 
@@ -502,23 +502,16 @@ export default {
         this.members[index].memberDepartmentCode = 'public'
       }
 
-      //continue here
-    //url = getprog + faculty id code & lvl code
+      if (this.members[index].memberUCID.length == 10) {
 
-    if (this.members[index].memberUCID.length == 10) {
-
-      console.log('test12')
-      // faculty = this.members[index].memberUCID.charAt(4)
-      // level = this.members[index].memberUCID.charAt(5)
-
-      axios
-          .get('/get/programmes/' + this.members[index].memberUCID.charAt(3) + '/' + this.members[index].memberUCID.charAt(4))
-          .then(
-            response => (this.members[index].memberProgrammeList = response.data)
-          );
-    }else {
-      this.members[index].memberProgrammeList = []
-    }
+        axios
+            .get('/get/programmes/' + this.members[index].memberUCID.charAt(3) + '/' + this.members[index].memberUCID.charAt(4))
+            .then(
+              response => (this.members[index].memberProgrammeList = response.data)
+            );
+      }else {
+        this.members[index].memberProgrammeList = []
+      }
 
     },
     checkHasCompany(e, index){
@@ -550,11 +543,6 @@ export default {
     }
   },
   beforeCreate() {
-        axios
-          .get('/get/programmes')
-          .then(
-            response => (this.options = response.data)
-          );
         axios
           .get('/get/department')
           .then(

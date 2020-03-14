@@ -47,11 +47,11 @@ class PRDirectorApprovalController extends Controller
         $app-> approval = $request-> is_recommended;
         $app-> comment = $request-> comment;
         if ($request-> approval == 1) {
-            $app-> isComplated = 1;
+            $app-> is_recommended = 1;
             $prID = $app-> prStatus-> projectRegistration-> id;
             CreateNewProject::dispatch($prID)->delay(now()->addSeconds(3));
         } else if ($request-> approval == 0){
-            $app-> isComplated = 2;
+            $app-> is_recommended = 0;
         }
         
         $app-> save();

@@ -21,74 +21,6 @@ use App\Mail\InvestorRegistrationApprovalInvitation;
 
 class EmailController extends Controller
 {
-    /**
-     * Send Supervisor Recommendation Invitation
-     * 
-     * @param String $email
-     * @param String $companyEmail
-     * @param integer $recID
-     * 
-     */
-    public static function supervisorRecommendationInvitation($email, $companyEmail, $recID, $recipient)
-    {
-        $url = self::generateURL($recID, 1);//pass 1 as type supervisor
-        Mail::to([$email, $companyEmail])
-            ->later(self::tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($recipient, $url));
-    }
-
-    /**
-     * Send Dean/HeadDepartment Recommendation Invitation
-     * @param String $email
-     * @param String $companyEmail
-     * @param integer $recID
-     */
-    public static function deanheadRecommendation($email, $recID, $recipient) 
-    {
-        $url = self::generateURL($recID, 2);//pass 2 as type dean/head
-        Mail::to([$email])
-            ->later(self::tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($recipient, $url));
-    }
-
-    /**
-     * Send Manager Recommendation Invitation
-     * @param String $email
-     * @param String $companyEmail
-     * @param integer $recID
-     */
-    public static function managerRecommendation($email, $recID, $recipient) 
-    {
-        $url = self::generateURL($recID, 3);//pass 3 as type manager
-        Mail::to([$email])
-            ->later(self::tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($recipient, $url));
-    }
-
-    /**
-     * Send Director Approval Invitation
-     * 
-     * @param String $email 
-     * @param Integer $appID
-     * @param String $recipient 
-     */
-    public static function directorApproval($email, $appID, $recipient)
-    {
-        $url = self::generateURL($appID, 4);
-        Mail::to([$email])
-            ->later(self::tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($recipient, $url));
-    }
-
-    /**
-     * Send Success Project Registration Email notification 
-     * 
-     * @param String $recipient 
-     * @param Integer $projectID
-     * @param String $projectTitle 
-     */
-    public static function successProjectRegistrations($recipient, $projectID, $projectTitle)
-    {
-        Mail::to([$recipient-> email, $recipient-> company_email])
-            ->later(self::tenSecondDelayTime(), new SuccessProjectRegistrationNotification($recipient-> name, $projectTitle, $projectID));
-
-    }
 
     /**
      * Re-Notification for Project Recommendation
@@ -200,35 +132,7 @@ class EmailController extends Controller
             ->later(self::tenSecondDelayTime(), new InvestorRegistrationApprovalInvitation($recipient, $url, $investorName));
     }
  //////////////////////////////////////////////////////////////////
-    /**
-     * Generate URL for project registration recommendation and approval
-     * 
-     * @param int $recID
-     * @param int $type
-     */
-    public static function generateURL($recID, $type)
-    {
-        // encrypt the recommendatiom id and type
-        $cryptedRecID = Crypt::encrypt($recID);
-        $cryptedType = Crypt::encrypt($type);
 
-        // check the type and generate correct URL 
-        switch ($type) {
-            case 1:
-            case 2:
-                return URL::temporarySignedRoute('project.recommendation.get', now()->addMinutes(2880), ['type'=> $cryptedType, 'recID'=> $cryptedRecID]);
-                break;
-            case 3:
-                return URL::temporarySignedRoute('project.recommendation.manager.get', now()->addMinutes(2880), ['type'=> $cryptedType, 'recID'=> $cryptedRecID]);
-                break;
-            case 4:
-                return URL::temporarySignedRoute('project.approval.get', now()->addMinutes(2880), ['type'=> $cryptedType, 'recID'=> $cryptedRecID]);
-                break;
-            default:
-            // abort the request if no matched case
-                abort(404);
-        }
-    } 
 
     /**
      * Get 10 second delay time to queue email

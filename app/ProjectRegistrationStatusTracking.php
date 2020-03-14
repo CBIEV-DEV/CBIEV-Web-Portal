@@ -88,4 +88,74 @@ class ProjectRegistrationStatusTracking extends Model
     {
         return $this->belongsTo('App\ProjectRegistration', 'project_registration_id');
     }
+
+    // Start model function
+
+    /**
+     * To save new project status tracking
+     */
+    public static function saveStatusTracking($project_registration_status, $project_registration_id){
+        return ProjectRegistrationStatusTracking::create([
+            'project_registration_status' => $project_registration_status,
+            'project_registration_id' => $project_registration_id
+        ]);
+    }
+
+    /**
+     * To save project tracking with status 'submited'
+     * 
+     */
+    public static function saveSubmitedStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(0, $project_registration_id);
+    }
+    /**
+     * To save project tracking with status 'supervisor recommendation'
+     * 
+     */
+    public static function saveSupervisorRecStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(1, $project_registration_id);
+    }
+    /**
+     * To save project tracking with status 'dean/head recommendation'
+     * 
+     */
+    public static function saveDeanHeadRecStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(2, $project_registration_id);
+    }
+    /**
+     * To save project tracking with status 'manager recommendation'
+     * 
+     */
+    public static function saveManagerRecStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(3, $project_registration_id);
+    }
+    /**
+     * To save project tracking with status 'director approval'
+     * 
+     */
+    public static function saveDirectorApprovalStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(4, $project_registration_id);
+    }
+    /**
+     * To save project tracking with status 'approved'
+     * 
+     */
+    public static function saveApprovedStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(5, $project_registration_id);
+    }
+    /**
+     * To save project tracking with status 'rejected'
+     * 
+     */
+    public static function saveRejectedStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(6, $project_registration_id);
+    }
 }
+ 

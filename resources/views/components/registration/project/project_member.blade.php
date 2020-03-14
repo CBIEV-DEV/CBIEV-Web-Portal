@@ -44,11 +44,15 @@
                                         @break          
                                 @endswitch
                             </td>
-                            <td>{{$member-> name}} <textarea name="name" placeholder="insert name" id="memname"></textarea></td>
+                            <td>{{$member-> name}}</td>
                             <td>{{$member-> ic}}</td>
                             <td>{{$member-> email}}</td>
                             <td>{{$member-> contact}}</td>
+                            @if ($member-> company != null) 
                             <td>{{$member-> company-> company_name}}</td>
+                            @else
+                            <td>N/A</td>
+                            @endif
                             <td>{{$member-> position}}</td>
                             <td>{{$member-> uc_id}}</td>
                             <td>{{$member-> centerFaculty-> code}}</td>

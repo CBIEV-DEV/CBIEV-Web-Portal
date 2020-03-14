@@ -10,7 +10,6 @@ class ISparkProjectController extends Controller
     public static function createNewProject($prID)
     {
         $projectRegistration = ProjectRegistration::find($prID);
-        return dd($projectRegistration);
         $newProject = new iSparkProject();
 
         $newProject-> project_title = $projectRegistration-> project_title;
