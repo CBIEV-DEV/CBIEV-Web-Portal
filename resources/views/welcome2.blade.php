@@ -62,10 +62,9 @@
                         <li>
                             <a class="button-one" href="{{route('mentor.registration.show')}}" target="_blank">iSpark Mentor</a>
                         </li>
-                        <li>
+
                         {{-- <li>
                             <a class="button-one" href="{{route('staff.login')}}" target="_blank">Co-Working Space</a>
-                        </li>
                         </li> --}}
                     </ul>
                 </div>
