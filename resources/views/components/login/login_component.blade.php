@@ -2,7 +2,7 @@
     <div class="login-title">
         <h3>
             @if (Request::is("staff/*"))
-                Staff
+                Staffs
             @endif
             @if (Request::is("project/*"))
                 iSpark Project

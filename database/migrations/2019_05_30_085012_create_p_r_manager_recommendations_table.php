@@ -17,12 +17,11 @@ class CreatePRManagerRecommendationsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('recommended_by');
             $table->foreign('recommended_by')->references('id')->on('cbiev_staff');
-            $table->boolean('is_recommended')->nullable();
-            $table->text('reason')->nullable();
-            $table->text('comment')->nullable();
+            $table->unsignedTinyInteger('is_recommended')->default(2)->nullable();// 0 = not recommended, 1 = recomended, 2 = pending, 3 = auto approved
+            $table->text('reason')->default(null)->nullable();
+            $table->text('comment')->default(null)->nullable();
             $table->unsignedBigInteger('pr_status_tracking_id');
             $table->foreign('pr_status_tracking_id')->references('id')->on('pr_status_trackings');
-            $table->unsignedTinyInteger('is_completed')->default(0);
             $table->timestamp('completed_at')->default(null)->nullable();
             $table->string('url', 700)->nullable();
             $table->timestamps();

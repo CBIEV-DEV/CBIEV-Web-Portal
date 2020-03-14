@@ -27,6 +27,9 @@ class CreateProjectRegistrationStatusTrackingsTable extends Migration
              * 4 = director approval
              * 5 = approved
              * 6 = rejected
+             * 7 = supervisor recommendation rerun
+             * 8 = dean/head recommendation rerun
+             * 9 = manager recommendation rerun
              */
         });
     }

@@ -17,6 +17,8 @@ class InvestorRegistrationController extends Controller
      * 
      * @return View view
      */
+        
+
     public function showRegistrationForm()
     {
         return view('form.registration.investor.investor_registration_form');
@@ -30,6 +32,10 @@ class InvestorRegistrationController extends Controller
     public function saveRegistration(Request $request)
     {
         // validate
+        request()->validate([
+            'companyRegisteredName' => 'required',
+            'companyBusinessRegNo' => 'required'
+            ]);
 
         // save investor registration
         $investorRegistration = InvestorRegistration::createNewInvestorRegistration(

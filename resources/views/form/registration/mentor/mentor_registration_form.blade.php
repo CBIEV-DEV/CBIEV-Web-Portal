@@ -5,7 +5,7 @@
     <div class="m-3">
         <div>
             <div class="text-center mp-3">
-                <h4 class="display-4 form-title">iSpark Mentor Registration Form</h4>
+                <h4 class="display-4 form-title">iSpark Mentor Application</h4>
                 <h4 class="display-4 form-title">---------------------------------------------</h4>
             </div>
             <div class="mt-5 ">

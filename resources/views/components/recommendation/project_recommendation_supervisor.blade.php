@@ -1,7 +1,19 @@
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="projectTitle">Type</label>
-        <input class="form-control" value="{{$person -> member_type}}" disabled>
+        @switch($person -> member_type)
+        @case(2)
+        <input class="form-control" value="Staff" disabled>
+            @break
+        @case(3)
+        <input class="form-control" value="Alumni" disabled>
+            @break
+        @case(4)
+        <input class="form-control" value="Public" disabled>
+            @break
+        @default
+        <input class="form-control" value="N/A" disabled>
+        @endswitch
     </div>
     <div class="form-group col-md-6">
         <label>Name</label>
@@ -44,7 +56,7 @@
     </div>
     <div class="form-group col-md-6">
         <label>Center/Department/Faculty</label>
-        <input class="form-control" value="{{$person-> centerFaculty-> code }}" disabled>
+        <input class="form-control" value="{{$person-> centerFaculty-> name }}" disabled>
     </div>
 </div>    
 @endif

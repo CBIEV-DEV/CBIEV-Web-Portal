@@ -166,7 +166,7 @@
           v-model="leaderDepartment"
           @select="selectFaculty"></multiselect>
         </div>
-        <input type="hidden" name="leaderDepartment" v-model="leaderDepartmentCode">
+        <input type="hidden" name="leaderDepartment" v-model="leaderDepartment">
        
       </div>
       <div class="form-row">
@@ -348,7 +348,7 @@ export default {
     },
     checkFaculty(){
       
-       if(this.leaderUCID.length >= 4 && this.leaderUCID.length == 4 && this.leaderType == 1){
+       if(this.leaderUCID.length == 10 && this.leaderType == 1){
         if (this.leaderUCID.charAt(3) == 'P' || this.leaderUCID.charAt(3) == 'p') {
           this.leaderDepartment= "Centre for Postgraduate Studies and Research";
           this.leaderDepartmentCode = 'focs'
@@ -358,31 +358,31 @@ export default {
           this.leaderDepartmentCode = 'focs'
         }
         if (this.leaderUCID.charAt(3) == 'B' || this.leaderUCID.charAt(3) == 'b') {
-          this.leaderDepartment= "Facuty of Accounting, Finance and Business";
+          this.leaderDepartment= "Faculty of Accounting, Finance and Business";
           this.leaderDepartmentCode = 'focs'
         }
         if (this.leaderUCID.charAt(3) == 'K' || this.leaderUCID.charAt(3) == 'k') {
-          this.leaderDepartment= "Facuty of Communication and Creative Industries";
+          this.leaderDepartment= "Faculty of Communication and Creative Industries";
           this.leaderDepartmentCode = 'focs'
         }
         if (this.leaderUCID.charAt(3) == 'L' || this.leaderUCID.charAt(3) == 'l') {
-          this.leaderDepartment= "Facuty of Applied Science";
+          this.leaderDepartment= "Faculty of Applied Science";
           this.leaderDepartmentCode = 'focs'
         }
         if (this.leaderUCID.charAt(3) == 'V' || this.leaderUCID.charAt(3) == 'v') {
-          this.leaderDepartment= "Facuty of Build Envionment";
+          this.leaderDepartment= "Faculty of Build Envionment";
           this.leaderDepartmentCode = 'focs'
         }
         if (this.leaderUCID.charAt(3) == 'M' || this.leaderUCID.charAt(3) == 'm') {
-          this.leaderDepartment= "Facuty of Computing and Information Technology";
+          this.leaderDepartment= "Faculty of Computing and Information Technology";
           this.leaderDepartmentCode = 'focs'
         }
         if (this.leaderUCID.charAt(3) == 'G' || this.leaderUCID.charAt(3) == 'g') {
-          this.leaderDepartment= "Facuty of Engineering and Technology";
+          this.leaderDepartment= "Faculty of Engineering and Technology";
           this.leaderDepartmentCode = 'focs'
         }
         if (this.leaderUCID.charAt(3) == 'J' || this.leaderUCID.charAt(3) == 'j') {
-          this.leaderDepartment= "Facuty of Social Science and Humanities";
+          this.leaderDepartment= "Faculty of Social Science and Humanities";
           this.leaderDepartmentCode = 'focs'
         }
 
@@ -399,14 +399,7 @@ export default {
         this.leaderDepartmentCode = 'public'
       }
 
-      //continue here
-    //url = getprog + faculty id code & lvl code
-
     if (this.leaderUCID.length == 10) {
-
-      console.log('test12')
-      // faculty = this.leaderUCID.charAt(4)
-      // level = this.leaderUCID.charAt(5)
 
       axios
           .get('/get/programmes/' + this.leaderUCID.charAt(3) + '/' + this.leaderUCID.charAt(4))
@@ -445,11 +438,6 @@ export default {
   },
   
   beforeCreate() {
-        axios
-          .get('/get/programmes')
-          .then(
-            response => (this.options = response.data)
-          );
         axios
           .get('/get/department')
           .then(

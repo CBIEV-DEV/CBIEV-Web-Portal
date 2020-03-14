@@ -60,7 +60,7 @@ class PRSupervisorRecommendation extends Model
      */
     public function prSupervisor()
     {
-        return $this->belongsTo('App\ProjectSupervisor', 'recommended_by');
+        return $this->belongsTo('App\ProjectSupervisor', 'recommended_by', 'id');
     }
 
     /**
@@ -70,5 +70,28 @@ class PRSupervisorRecommendation extends Model
     {
         return $this->belongsTo('App\ProjectRegistrationStatusTracking', 'pr_status_tracking_id');
     }
-
+    // Model Function start
+    /**
+     * 
+     */
+    public static function saveNewSupervisorRecommendation(
+        $recommended_by, $pr_status_tracking_id)
+    {
+        return PRSupervisorRecommendation::create([
+            'recommended_by' => $recommended_by,
+            'pr_status_tracking_id' => $pr_status_tracking_id,
+        ]);
+    }
+    /**
+     * 
+     */
+    public static function updateRecommendation($id, $comment, $is_recommended, $completed_at)
+    {
+        PRSupervisorRecommendation::where('id', $id)
+                                    -> update([
+                                        'comment' => $comment,
+                                        'is_recommended' => $is_recommended,
+                                        'completed_at' => $completed_at,
+                                    ]);
+    }
 }
