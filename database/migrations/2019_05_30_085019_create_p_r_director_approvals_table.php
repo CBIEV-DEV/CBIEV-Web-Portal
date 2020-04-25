@@ -17,7 +17,7 @@ class CreatePRDirectorApprovalsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('approved_by');
             $table->foreign('approved_by')->references('id')->on('cbiev_staff');
-            $table->unsignedTinyInteger('is_recommended')->default(2)->nullable();// 0 = not recommended, 1 = recomended, 2 = pending, 3 = auto approve
+            $table->unsignedTinyInteger('is_recommended')->default(2)->nullable();// 0 = not approve, 1 = approved, 2 = pending, 3 = auto approve
             $table->text('reason')->default(null)->nullable();
             $table->text('comment')->default(null)->nullable();
             $table->unsignedBigInteger('pr_status_tracking_id');

@@ -90,7 +90,6 @@ class ProjectRegistrationStatusTrackingController extends Controller
     {
         $statusID = ProjectRegistrationStatusTracking::saveManagerRecStatus($projectRegisID)-> id;
         $manager = CBIEVStaff::where('role', 2)-> get()-> first();
-        $managerRecommendationID = PRManagerRecommendation::saveNewManagerRecommendation($manager->id, $statusID);
 
         Mail::to([$manager-> email])
             ->later($this-> tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($manager-> name, $this-> generateURL(PRManagerRecommendation::saveNewManagerRecommendation($manager->id, $statusID)-> id, 3)));//pass 3 as type manager

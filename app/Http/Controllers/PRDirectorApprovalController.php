@@ -44,7 +44,7 @@ class PRDirectorApprovalController extends Controller
         $dec2 = Crypt::decrypt($dec);
 
         $app = PRDirectorApproval::find($dec2);
-        $app-> approval = $request-> is_recommended;
+        $app-> is_recommended = $request-> is_recommended;
         $app-> comment = $request-> comment;
         if ($request-> approval == 1) {
             $app-> is_recommended = 1;

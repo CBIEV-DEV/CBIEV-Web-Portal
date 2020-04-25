@@ -78,13 +78,13 @@
                                 <td>
                                     @switch($supRec-> is_recommended)
                                         @case(0)
-                                            Pending
-                                            @break
-                                        @case(1)
                                             Not Recommended
                                             @break
-                                        @case(2)
+                                        @case(1)
                                             Recommended
+                                            @break
+                                        @case(2)
+                                            Pending
                                             @break
                                         @case(3)
                                             Auto Approved
@@ -104,18 +104,18 @@
                                 <td>{{$deanHeadRec-> deanHead-> name}}</td>
                                 <td>
                                     @switch($deanHeadRec-> is_recommended)
-                                        @case(0)
-                                            Pending
-                                            @break
-                                        @case(1)
-                                            Recommended
-                                            @break
-                                        @case(2)
+                                    @case(0)
                                         Not Recommended
-                                            @break
-                                        @case(3)
-                                            Auto Approved
                                         @break
+                                    @case(1)
+                                        Recommended
+                                        @break
+                                    @case(2)
+                                        Pending
+                                        @break
+                                    @case(3)
+                                        Auto Approved
+                                    @break
                                     @endswitch
                                 </td>
                                 <td>{{$deanHeadRec-> comment}}</td>
@@ -130,18 +130,18 @@
                                 <td>{{$managerRec-> manager-> name}}</td>
                                 <td>
                                     @switch($managerRec-> is_recommended)
-                                        @case(0)
-                                            Pending
-                                            @break
-                                        @case(1)
-                                        Not Recommended
-                                            @break
-                                        @case(2)
-                                        Recommended
-                                            @break
-                                        @case(3)
-                                            Auto Approved
+                                    @case(0)
+                                    Not Recommended
                                         @break
+                                    @case(1)
+                                        Recommended
+                                        @break
+                                    @case(2)
+                                        Pending
+                                        @break
+                                    @case(3)
+                                        Auto Approved
+                                    @break
                                     @endswitch
                                 </td>
                                 <td>{{$managerRec-> comment}}</td>

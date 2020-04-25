@@ -55,6 +55,7 @@ class ProjectRegistrationController extends Controller
      */
     public function submitRegistration(Request $request)
     {
+        // return dd($request);
         // Sanitize input from request
         $this->sanitize($request);// sanitize $request input
         // Save Team Leader

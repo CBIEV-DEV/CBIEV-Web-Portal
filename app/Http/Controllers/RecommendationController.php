@@ -10,6 +10,7 @@ use App\PRDeanHeadRecommendation;
 use App\PRManagerRecommendation;
 use Carbon\Carbon;
 use App\Jobs\PRNotRecommended;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class RecommendationController extends Controller
 {
@@ -162,15 +163,12 @@ class RecommendationController extends Controller
      */
     public function checkAllRecIsCompleted($recEntry)
     {
-        $isCompleted = false;
         foreach ($recEntry as $rec) {
             if ($rec-> is_recommended === 2) {
-                $isCompleted = false;
-            }else{
-                $isCompleted =  true;
+                return false;
             }
+            return true;
         }
-        return $isCompleted;
     }
 
     /**

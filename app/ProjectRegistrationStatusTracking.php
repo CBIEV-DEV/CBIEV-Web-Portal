@@ -157,5 +157,29 @@ class ProjectRegistrationStatusTracking extends Model
     {
         return self::saveStatusTracking(6, $project_registration_id);
     }
+    /**
+     * To save project tracking with status 'rejected'
+     * 
+     */
+    public static function saveReSupervisorRecommendationStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(7, $project_registration_id);
+    }
+    /**
+     * To save project tracking with status 'rejected'
+     * 
+     */
+    public static function saveReDeanHeadRecommendationStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(8, $project_registration_id);
+    }
+    /**
+     * To save project tracking with status 'rejected'
+     * 
+     */
+    public static function saveReManagerRecommendationStatus($project_registration_id)
+    {
+        return self::saveStatusTracking(9, $project_registration_id);
+    }
 }
  

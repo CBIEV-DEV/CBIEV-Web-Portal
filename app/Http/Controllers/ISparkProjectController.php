@@ -18,6 +18,8 @@ class ISparkProjectController extends Controller
         $newProject-> problem_statement = $projectRegistration-> problem_statement;
         $newProject-> product_solution = $projectRegistration-> product_solution;
         $newProject-> target_market = $projectRegistration-> target_market;
+        $newProject-> category_id = $projectRegistration-> category_id;
+        $newProject-> team_leader = $projectRegistration-> team_leader;
 
         $newProject-> save();
     }
