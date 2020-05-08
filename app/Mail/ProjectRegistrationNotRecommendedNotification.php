@@ -24,7 +24,7 @@ class ProjectRegistrationNotRecommendedNotification extends Mailable
         $this-> projectTitle = $projectTitle;
         $this-> recipient = $recipient;
 
-        $this-> url = 'www.google.com';
+        $this-> url = route('');
     }
 
     /**

@@ -41,6 +41,7 @@ class PRTempAccountController extends Controller
         } catch (Illuminate\Contracts\Encryption\DecryptException $e) {
             abort(401);
         }
+        
         $oldPR = ProjectRegistration::find($decryptedPRID);
         $newPR = $oldPR;
         $newPR -> problem_statement = $request-> newProblem;
@@ -49,7 +50,6 @@ class PRTempAccountController extends Controller
         $newPR -> save();
 
         ProjectRegistrationChangeLogController::newLog($decryptedPRID, $newPR, $oldPR);
-
         
         if (Auth::guard('project-registration')->check()) {
             Auth::user()-> deactivate();

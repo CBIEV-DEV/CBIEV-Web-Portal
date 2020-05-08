@@ -22,15 +22,15 @@
                     <tr>
                         <td>{{$directorApp-> director-> name}}</td>
                         <td>
-                            @switch($directorApp-> is_completed)
+                            @switch($directorApp-> is_recommended)
                                 @case(0)
                                     Pending
                                     @break
                                 @case(1)
                                 @case(2)
-                                        @if ($directorApp-> is_completed == 1)
+                                        @if ($directorApp-> is_recommended == 1)
                                             Approved
-                                        @elseif($directorApp-> is_completed == 2)
+                                        @elseif($directorApp-> is_recommended == 2)
                                             Rejected
                                         @endif
                                     @break

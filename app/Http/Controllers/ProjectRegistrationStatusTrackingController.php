@@ -111,6 +111,19 @@ class ProjectRegistrationStatusTrackingController extends Controller
     }
 
     /**
+     * 
+     */
+    public function startRerunRecommendation($projectRegisID)
+    {
+        $statusID = ProjectRegistrationStatusTracking::saveDirectorApprovalStatus($projectRegisID)-> id;;
+        $director = CBIEVStaff::where('role', 3)-> get()-> first();
+
+        Mail::to([$director-> email])
+            ->later(self::tenSecondDelayTime(),new ProjectRegistrationRecommendationInvitation($director-> name, $this-> generateURL(PRDirectorApproval::saveNewDirectorApproval($director->id, $statusID)-> id, 4)));
+
+    }
+
+    /**
      * Get Center/Faculty/Department Member Entry Count
      */
     public static function centerFacultyEntryCount($projectRegisID)

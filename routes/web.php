@@ -83,7 +83,7 @@ Route::prefix('registration')->group(function(){
         Route::post('login', 'Auth\ProjectRegistration\LoginController@login')->name('project.registration.login.submit');
         Route::get('logout', 'Auth\ProjectRegistration\LoginController@logout')->name('pr.temp.logout');
         Route::get('home', 'PRTempAccountController@home')->name('pr.temp.home');
-        Route::post('home', 'PRTempAccountController@update')->name('pr.temp.registration.update');
+        Route::post('update', 'PRTempAccountController@update')->name('pr.temp.registration.update');
         Route::get('updateComplete', 'PRTempAccountController@updateComplete')->name('pr.temp.update.complete');
     });
    

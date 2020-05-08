@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Exceptions;
+
+use Arr;
 use Throwable;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -51,7 +53,7 @@ class Handler extends ExceptionHandler
 
         switch($class) {
             case 'Illuminate\Auth\AuthenticationException':
-                $guard = array_get($exception->guards(), 0);
+                $guard = Arr::get($exception->guards(), 0);
                 switch ($guard) {
                     case 'cbiev-staff':
                         $login = 'staff.login';

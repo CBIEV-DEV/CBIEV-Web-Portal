@@ -72,7 +72,7 @@ class ProjectRegistrationController extends Controller
         // Send Notification Mail to Team Leader
         Mail::to([$teamLeader-> email, $teamLeader-> company_email])
             ->later(10, new SuccessProjectRegistrationNotification($teamLeader-> name, $projectRegistration-> project_title, $projectRegistration-> id));
-        return redirect(route('registration.redirect'));
+        // return redirect(route('registration.redirect'));
     }
     
     /**

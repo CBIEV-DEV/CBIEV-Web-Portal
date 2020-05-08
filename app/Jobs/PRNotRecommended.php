@@ -56,17 +56,17 @@ class PRNotRecommended implements ShouldQueue
                 break;
         }
         $this-> projectRegis = $rec-> prStatus-> projectRegistration;
-        $statusID = ProjectRegistrationStatusTrackingController::nextStatus($this-> projectRegis-> id, 7);
-
+        
+        $prstc = new ProjectRegistrationStatusTrackingController();
         switch ($this-> type) {
             case 1:
-                PRSupervisorRecommendationController::newRecommendation($statusID, $rec-> recommended_by);
+                $prstc->startSupervisorRecommendation($this-> projectRegis);
                 break;
             case 2:
-                PRDeanHeadRecommendationController::newRecommendation($statusID, $rec-> recommended_by);
+                $prstc->startDeanHeadRecommendation($this-> projectRegisy);
                 break;
             case 3:
-                PRManagerRecommendationController::newRecommendation($statusID, $rec-> recommended_by);
+                $prstc->startManagerRecommendation($this-> projectRegis);
                 break;
         }
 
