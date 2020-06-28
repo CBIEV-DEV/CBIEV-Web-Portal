@@ -11,12 +11,13 @@ use App\MentorRegistrationExperience;
 use App\MentorRegistrationStatusTracking;
 use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Validation\ValidationException;
 
 class MentorRegistrationController extends Controller
 {
     /**
      * Show mentor registration form
-     * 
+     *
      * @return View view
      */
     public function showRegistrationForm()
@@ -26,8 +27,8 @@ class MentorRegistrationController extends Controller
     }
 
     /**
-     * Save mentor registration 
-     * 
+     * Save mentor registration
+     *
      * @param Request $request
      */
     public function saveRegistration(Request $request)
@@ -35,10 +36,25 @@ class MentorRegistrationController extends Controller
         // return dd($request-> mentorExpText);
         // return dd($request);
         // validation
+
+        //--- my code
+        $validatedData = $request->validate([
+            'mentorName' => "required|alpha|max:255",
+            'mentorICPass' => "required|max:13", //validation for IC only
+            'mentorContact' => "required|max:255",
+            'mentorEmail' => "required|emailmax:255",
+            'mentorHasExp' => "required",
+            'mentorExpText' => "required|max:1000",
+            'mentorExpEntrepreneuship' => "required|max:1000",
+            'mentoring' => "required",
+            'howHearProgram' => "required|max:1000"
+        ]);
+        //---my code end
+
         // check company exist and save
         if ($request-> mentorHasCompany == "true") {
             $companyID = Company::checkCompanyIsExistOrCreateNew($request-> mentorCompanyRegNo, $request-> mentorCompanyName)-> id;
-        }else{
+        } else {
             $companyID = null;
         }
 
@@ -63,10 +79,10 @@ class MentorRegistrationController extends Controller
         $newMentorRegistration->saveUpload(FileUploadController::upload($path, $request-> mentorFile, 'mentor_registration_image.png'));
         
         // set mentor type sync pivot table
-        if($request-> has('mentorTypeBusi') && $request-> mentorTypeBusi == 'on'){// for business mentor
+        if ($request-> has('mentorTypeBusi') && $request-> mentorTypeBusi == 'on') {// for business mentor
             $newMentorRegistration-> syncMentorTypeBusiness();
         }
-        if($request-> has('mentorTypeTech') && $request-> mentorTypeTech == 'on'){// for technical mentor
+        if ($request-> has('mentorTypeTech') && $request-> mentorTypeTech == 'on') {// for technical mentor
             $newMentorRegistration-> syncMentorTypeTechnical();
         }
         // if internal save internal mentor detail
@@ -76,11 +92,11 @@ class MentorRegistrationController extends Controller
         // save mentor experience
                
         MentorRegistrationExperience::createNewMentorRegistrationExperience(
-            $newMentorRegistrationID, 
-            $request-> mentorHasExp, 
-            $request-> mentorExpText, 
-            $request-> mentorExpEntrepreneuship, 
-            $request-> mentoring, 
+            $newMentorRegistrationID,
+            $request-> mentorHasExp,
+            $request-> mentorExpText,
+            $request-> mentorExpEntrepreneuship,
+            $request-> mentoring,
             $request-> howHearProgram
         );
         MentorRegistrationStatusTracking::newRegisteredStatus($newMentorRegistrationID);
@@ -88,14 +104,13 @@ class MentorRegistrationController extends Controller
         // redirect registration summary
 
         return 'success, mentor';
-
     }
 
     /**
      * Show termination confirmation form
-     * 
+     *
      * @param Integer $id
-     * 
+     *
      * @return View view
      */
     public function showTerminationForm($id)
@@ -107,7 +122,7 @@ class MentorRegistrationController extends Controller
 
     /**
      * Terminate the mentor registration
-     * 
+     *
      */
     public function terminateRegistration(Request $request)
     {
@@ -122,7 +137,7 @@ class MentorRegistrationController extends Controller
 
     /**
      * Find and return mentor registration
-     * 
+     *
      * @param Interger id
      */
     public function find($id)
@@ -132,9 +147,9 @@ class MentorRegistrationController extends Controller
 
     /**
      * Decrypted encrypted value
-     * 
+     *
      * @param String
-     * 
+     *
      * @return Mixed
      */
     public function decrypt($encryptedValue)
