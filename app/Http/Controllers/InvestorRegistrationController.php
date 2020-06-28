@@ -14,7 +14,7 @@ class InvestorRegistrationController extends Controller
 {
     /**
      * Show mentor registration form
-     * 
+     *
      * @return View view
      */
         
@@ -25,24 +25,38 @@ class InvestorRegistrationController extends Controller
     }
 
     /**
-     * Save mentor registration 
-     * 
+     * Save mentor registration
+     *
      * @param Request $request
      */
     public function saveRegistration(Request $request)
     {
         // validate
-        request()->validate([
-            'companyRegisteredName' => 'required',
-            'companyBusinessRegNo' => 'required'
+        $validatedData = $request->validate([
+            'companyRegisteredName' => "required|max:255",
+            'companyBusinessRegNo' => "required|alpha_num", //alphanumeric only
+            'AddressLine1' => "required|max:225",
+            'AddressLine2' => "required|max:225",
+            'AddressCity' => "required|max:150",
+            'AddressState' => "required",
+            'AddressZip' => "required",
+            'companyPaidUpCap' => "required",
+            'companyTel' => "required|max:11",
+            'companyFax' => "required|max:11",
+            'companyHP' => "required|max:11",
+            'companyEmail' => "required|email|max:150",
+            'companyBusinessClassification' => "required|max:150",
+            'companyBusinessDesc' => "required|max:1000",
+            'companyAreaOfInterest' => "required|max:3000",
+            'companyAttendSession' => "required"
             ]);
 
         // save investor registration
         $investorRegistration = InvestorRegistration::createNewInvestorRegistration(
-            $request-> companyRegisteredName, 
-            $request-> companyBusinessRegNo, 
-            $request-> companyPaidUpCap, 
-            $request-> companyWebsite, 
+            $request-> companyRegisteredName,
+            $request-> companyBusinessRegNo,
+            $request-> companyPaidUpCap,
+            $request-> companyWebsite,
             $request-> companyBusinessClassification,
             $request-> companyBusinessDesc,
             $request-> companyAreaOfInterest,
@@ -69,7 +83,7 @@ class InvestorRegistrationController extends Controller
                 $request-> businessAddressState
             );
             InvestorRegistrationAddressList::newBusinessAddress($investorRegistrationID, $businessAddress-> id);
-        }else{
+        } else {
             InvestorRegistrationAddressList::newBusinessAddress($investorRegistrationID, $registeredAddress-> id);
         }
 
@@ -96,7 +110,7 @@ class InvestorRegistrationController extends Controller
 
         InvestorRegistrationStatusTracking::newRegisteredStatus($investorRegistrationID);
 
-        // redirect 
+        // redirect
 
         return ('success, investor');
     }

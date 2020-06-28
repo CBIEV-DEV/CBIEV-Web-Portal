@@ -14,10 +14,9 @@ use App\CenterFaculty;
 use App\Mail\SuccessProjectRegistrationNotification;
 use App\ProjectRegistrationStatusTracking;
 
-
 class ProjectRegistrationController extends Controller
 {
-    private  $memberProgrammes = [];
+    private $memberProgrammes = [];
 
     private $company_id;
     private $center_faculty_id;
@@ -35,14 +34,14 @@ class ProjectRegistrationController extends Controller
 
     /**
      * To sanitize input
-     * 
+     *
      * @param Request $request
      */
-    public function sanitize(Request $request){
-
-       if ($request->has('memberProgramme')) {
-        $this->memberProgrammes = array_values(array_filter($request-> memberProgramme));// remove null array item
-       }
+    public function sanitize(Request $request)
+    {
+        if ($request->has('memberProgramme')) {
+            $this->memberProgrammes = array_values(array_filter($request-> memberProgramme));// remove null array item
+        }
     }
 
     /**
@@ -55,6 +54,15 @@ class ProjectRegistrationController extends Controller
      */
     public function submitRegistration(Request $request)
     {
+        //validation
+        $validatedData = $request->validate([
+        'projectTitle' => "required|max:225",
+        'projectCategory' => "required",
+        'projectstate' => "required|max:1000",
+        'prodSol' => "required|max:1000",
+        'targetMark' => "required|max:1000"
+        ]);
+
         // Sanitize input from request
         $this->sanitize($request);// sanitize $request input
         // Save Team Leader
@@ -91,16 +99,27 @@ class ProjectRegistrationController extends Controller
             case 3:
             case 4:
                 if ($request->leaderHasCompany == true) {
-                    $companyID = Company::saveCompany($request->leaderCompanyRegNo ,$request->leaderCompanyName)-> id;// Save company and get company id
+                    $companyID = Company::saveCompany($request->leaderCompanyRegNo, $request->leaderCompanyName)-> id;// Save company and get company id
                 }
+                // no break
             default:
                 $companyID = null;
                 break;
         }
 
         return ProjectMember::saveMember(
-            $request-> leaderIC, $request-> leaderType, $request-> leaderName, $request-> leaderContact, $request-> leaderEmail, $request-> leaderUCID, $this-> company_id, $request-> leaderCompanyEmail, $request-> leaderPosition, CenterFaculty::getIDByName($request-> leaderDepartment), Programme::getIDByProgrammeName($request-> leaderProgramme)
-        );// Save team leader and return team leader 
+            $request-> leaderIC,
+            $request-> leaderType,
+            $request-> leaderName,
+            $request-> leaderContact,
+            $request-> leaderEmail,
+            $request-> leaderUCID,
+            $this-> company_id,
+            $request-> leaderCompanyEmail,
+            $request-> leaderPosition,
+            CenterFaculty::getIDByName($request-> leaderDepartment),
+            Programme::getIDByProgrammeName($request-> leaderProgramme)
+        );// Save team leader and return team leader
     }
 
     /**
@@ -111,7 +130,7 @@ class ProjectRegistrationController extends Controller
      *
      */
     public function saveProjectParticipant($request, $projectRegistration)
-    {   
+    {
         if ($request-> participantIndex > 0) {// Check if participant is more than 0
             for ($i=0; $i < $request-> participantIndex; $i++) {// Loop to save each participant
                 
@@ -123,17 +142,28 @@ class ProjectRegistrationController extends Controller
                     case 3:
                     case 4:
                         if ($request->memberHasCompany == true) {
-                            $this-> companyID = Company::saveCompany($request-> memberCompanyRegNo ,$request-> memberCompanyName)-> id;// Save company and get company id
+                            $this-> companyID = Company::saveCompany($request-> memberCompanyRegNo, $request-> memberCompanyName)-> id;// Save company and get company id
                         }
+                        // no break
                     default:
                         $companyID = null;
                         break;
                 }
         
-                $projectRegistration -> projectMember() 
+                $projectRegistration -> projectMember()
                 -> sync(ProjectMember::saveMember(
-                    $request-> memberIC[$i], $request-> memberType[$i], $request-> memberName[$i], $request-> memberContact[$i], $request-> memberEmail[$i], $request-> memberUCID[$i], $this-> company_id, $request-> memberCompanyEmail[$i], $request-> memberPosition[$i], CenterFaculty::getIDByName($request-> memberDepartment[$i]), Programme::getIDByProgrammeName($this-> memberProgrammes[$i])
-                ), false);// Save team leader and return team leader 
+                    $request-> memberIC[$i],
+                    $request-> memberType[$i],
+                    $request-> memberName[$i],
+                    $request-> memberContact[$i],
+                    $request-> memberEmail[$i],
+                    $request-> memberUCID[$i],
+                    $this-> company_id,
+                    $request-> memberCompanyEmail[$i],
+                    $request-> memberPosition[$i],
+                    CenterFaculty::getIDByName($request-> memberDepartment[$i]),
+                    Programme::getIDByProgrammeName($this-> memberProgrammes[$i])
+                ), false);// Save team leader and return team leader
             }
         }
     }
@@ -147,32 +177,33 @@ class ProjectRegistrationController extends Controller
         if ($request-> supervisorIndex > 0) {// Check if project supervisor is more than 0
             for ($i=0; $i < $request-> supervisorIndex; $i++) {// Loop to save each participant
                 switch ($request-> supType[$i]) {// Set Company ID according to supervisor type and set faculty id
-                    case 2: 
-                        $this->center_faculty_id =  CenterFaculty::getIDByName($request-> supervisorDepartmentCode[$i] );// set faculty id
+                    case 2:
+                        $this->center_faculty_id =  CenterFaculty::getIDByName($request-> supervisorDepartmentCode[$i]);// set faculty id
                         $this->companyID =  1;// 2 is staff, Company ID 1 = taruc
                         break;
                     case 3:
                     case 4:
-                        $this-> center_faculty_id =  null;// 3 and 4 are alumni and public, doesn't belongs to tarcu, hence not under any faculty or center 
+                        $this-> center_faculty_id =  null;// 3 and 4 are alumni and public, doesn't belongs to tarcu, hence not under any faculty or center
 
                         if ($request-> supervisorHasCompany[$i] == true) {
-                            $this-> companyID = Company::saveCompany($request-> supervisorCompanyRegNo ,$request-> supervisorCompanyName)-> id;// save company and get company id 
-                        }else {
+                            $this-> companyID = Company::saveCompany($request-> supervisorCompanyRegNo, $request-> supervisorCompanyName)-> id;// save company and get company id
+                        } else {
                             $this-> companyID = null;// if no company, set to null
                         }
+                        // no break
                     default:
                         $this-> companyID = null;
                         break;
                 }
             
-                $projectRegistration -> projectSupervisor() 
-                -> sync(ProjectSupervisor::saveProjectSupervisor($request-> supervisorIC[$i], $request-> supType[$i], $request-> supervisorName[$i], $request-> supervisorContact[$i], $request-> supervisorEmail[$i], $this-> companyID, $request-> supervisorCompanyEmail[$i], $request-> supervisorPosition[$i], $request-> supervisorUCID[$i], $this-> center_faculty_id), false);// Save supervisor and return supervisor 
+                $projectRegistration -> projectSupervisor()
+                -> sync(ProjectSupervisor::saveProjectSupervisor($request-> supervisorIC[$i], $request-> supType[$i], $request-> supervisorName[$i], $request-> supervisorContact[$i], $request-> supervisorEmail[$i], $this-> companyID, $request-> supervisorCompanyEmail[$i], $request-> supervisorPosition[$i], $request-> supervisorUCID[$i], $this-> center_faculty_id), false);// Save supervisor and return supervisor
             }
         }
     }
 
     /**
-     * 
+     *
      */
     public function showLoginForm()
     {

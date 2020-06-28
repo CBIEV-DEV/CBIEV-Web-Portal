@@ -37,7 +37,6 @@ class MentorRegistrationController extends Controller
         // return dd($request);
         // validation
 
-        //--- my code
         $validatedData = $request->validate([
             'mentorName' => "required|alpha|max:255",
             'mentorICPass' => "required|max:13", //validation for IC only
@@ -49,7 +48,6 @@ class MentorRegistrationController extends Controller
             'mentoring' => "required",
             'howHearProgram' => "required|max:1000"
         ]);
-        //---my code end
 
         // check company exist and save
         if ($request-> mentorHasCompany == "true") {
