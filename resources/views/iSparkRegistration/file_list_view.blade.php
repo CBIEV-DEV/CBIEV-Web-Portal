@@ -31,6 +31,7 @@
                     <th scope="col">File ID</th>
                     <th scope="col">File Name</th>
                     <th scope="col">File Path</th>
+                    <th scope="col">Time Uploaded</th>
                 </thead>
 
                 @foreach ($fileUploads as $fl)
@@ -44,6 +45,7 @@
                         {{-- <a href="{{route('project.file.list',[$fl->id])}}"target="_blank">{{$fl->file_url}}</a>
                         --}}
                     </td>
+                    <td>{{$fl-> created_at}}</td>
                 </tr>
                 @endforeach
 
