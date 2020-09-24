@@ -43,17 +43,19 @@ class PRDirectorApprovalController extends Controller
         $dec = Crypt::decrypt($request-> recID);
         $dec2 = Crypt::decrypt($dec);
 
+        // return dd(Crypt::decrypt($request-> recID));
         $app = PRDirectorApproval::find($dec2);
-        $app-> approval = $request-> is_recommended;
+        $app-> is_recommended  = $request-> is_recommended;
         $app-> comment = $request-> comment;
-        if ($request-> approval == 1) {
+        if ($request-> is_recommended  == 1) {
             $app-> is_recommended = 1;
             $prID = $app-> prStatus-> projectRegistration-> id;
             CreateNewProject::dispatch($prID)->delay(now()->addSeconds(3));
-        } else if ($request-> approval == 0){
+        } else if ($request-> is_recommended  == 0){
             $app-> is_recommended = 0;
         }
         
         $app-> save();
+        return redirect(route('recommendation.success.redirect'));
     }
 }

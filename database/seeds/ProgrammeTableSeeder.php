@@ -11,7 +11,7 @@ class ProgrammeTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Programmes')->insert([
+        DB::table('programmes')->insert([
             [
                 'center_faculty_id' => '5',
                 'category' => '1',

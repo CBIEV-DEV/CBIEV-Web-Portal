@@ -27,7 +27,7 @@ class CreateISparkProjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('project_title')->nullable();
             $table->text('problem_statement')->nullable();
-            $table->text('proposed_solution')->nullable();
+            $table->text('product_solution')->nullable();
             $table->text('target_market')->nullable();
             $table->unsignedTinyInteger('category_id')->nullable();
             $table->unsignedBigInteger('team_leader')->nullable();

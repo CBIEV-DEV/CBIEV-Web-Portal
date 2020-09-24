@@ -10,17 +10,19 @@
                 @csrf
                 <input type="hidden" name="recID" value="{{Crypt::encrypt($recID)}}">
                 <div class="form-row">
-                    <div class="form-group col-sm-4">Do you approve this project registration?<span style="color:red"> *</span></div>
+                    <div class="form-group col-sm-4">Do you approve this project registration?1<span style="color:red"> *</span></div>
                     <div class="form-group col-md-6">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="approval" id="approvalYes"
-                                value="1">
-                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                            <label class="form-check-label" for="approvalYes">
+                                <input class="form-check-input" type="radio" name="is_recommended" id="approvalYes" value="1">
+                                Yes</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="approval" id="approvalNo"
+                            
+                            <label class="form-check-label" for="approvalNo">
+                                <input class="form-check-input" type="radio" name="is_recommended" id="approvalNo"
                                 value="0">
-                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                No</label>
                         </div>
                     </div>
                     @if ($errors->has('approval'))
@@ -33,7 +35,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-10">
                         <label for="projectDesc">Approval Comment</label><span style="color:red"> *</span>
-                        <textarea class="form-control" id="approvalComment" name="approvalComment" cols="30"
+                        <textarea class="form-control" id="approvalComment" name="comment" cols="30"
                             rows="10" value=""></textarea>
                         @if ($errors->has('recommendationComment'))
                         <div class="alert alert-danger" role="alert">
