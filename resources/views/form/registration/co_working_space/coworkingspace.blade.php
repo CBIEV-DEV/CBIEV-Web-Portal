@@ -64,11 +64,7 @@
             </coworkingspace-teamleader>
     
  <div class="text-center"><strong>----------------------------------------------------------------------------- Team Member Information ---------------------------------------------------------------------------</strong></div>
-            <coworkingspace-member>
-           
-            </coworkingspace-member>
-
-            
+            <coworkingspace-member></coworkingspace-member>
             
             <div><strong>-------------------------------------------------------------------------------- Supervisor/Mentor -------------------------------------------------------------------------------- </strong></div>
             <div class="form-row ">
@@ -88,7 +84,17 @@
     <div class="form-group col-md-6">
         <label for="coworkingspacestafffaculty" class="col-form-label">Faculty<span style="color:red">*</span></label>
         <div class="">
-            <input type="text" name="coworkingspacestafffaculty" placeholder="Example: FOCS, FOBE, FOAS, etc...." required="" title="Please insert your faculty" id="coworkingspacestafffaculty" class="form-control">
+            <select class="form-control" name="coworkingspacestafffaculty" id="coworkingspacestafffaculty">
+                <option value="4">Center of Postgraduete Studies and Research</option>
+                <option value="5">Center of Pre-University Studies</option>
+                <option value="17">Faculty of Accountancy, Finance and Business</option>
+                <option value="18">Faculty of Applied Science</option>
+                <option value="19">Faculty of Build Environment</option>
+                <option value="20">Faculty of Communication and Creative Industry</option>
+                <option value="21">Faculty of Computing and Information Technology</option>
+                <option value="22">Faculty of Engineering and Technology</option>
+                <option value="23">Faculty of Social Science and Humanities</option>
+            </select>
         </div>
     </div>
     

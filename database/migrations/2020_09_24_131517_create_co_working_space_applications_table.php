@@ -14,7 +14,12 @@ class CreateCoWorkingSpaceApplicationsTable extends Migration
     public function up()
     {
         Schema::create('co_working_space_applications', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->tinyInteger('project_type');
+            $table->string('project_title');
+            $table->string('project_description');
+            $table->string('start_duration');
+            $table->string('end_duration');
             $table->timestamps();
         });
     }

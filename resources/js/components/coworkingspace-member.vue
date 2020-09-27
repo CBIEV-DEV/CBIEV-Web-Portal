@@ -46,6 +46,15 @@
         </div>
       </div>
 
+      <div class="form-group col-md-6">
+        <label for="coworkingspaceIcNo" class="col-form-label">IC No.<span style="color:red">*</span></label>
+        <div class="">
+            <input type="text" name="coworkingspacememberIC" placeholder="Example:xxxxxx-xx-xxxx, etc..." required="" pattern="[0-9]{6}[-][0-9]{2}[-][0-9]{4}"  title="Example:xxxxxx-xx-xxxx" id="coworkingspaceIcNo" class="form-control" 
+            v-model="member.coworkingspacememberIC"
+            >
+        </div>
+        </div>
+
       <div class>
         <div class="col-md-6">
           <label for="coworkingspacememberUCID">Student ID</label>
@@ -79,8 +88,8 @@
 
         <input
           type="hidden"
-          name="coworkingspacememberDepartment[]"
-          v-model="member.coworkingspacememberDepartment"
+          name="coworkingspacememberDepartmentCode[]"
+          v-model="member.coworkingspacememberDepartmentCode"
         />
       </div>
 
@@ -90,7 +99,6 @@
           <span style="color:red">*</span>
           <multiselect
             id="coworkingspacememberProgramme"
-            name="coworkingspacememberProgramme[]"
             :options="member.coworkingspacememberProgrammeList"
             :disabled="member.disablePrograme"
             v-model="member.coworkingspacememberProgramme"
@@ -168,6 +176,7 @@ export default {
           coworkingspacememberProgrammeList: [],
           coworkingspacememberContact: "",
           coworkingspacememberEmail: "",
+          coworkingspacememberIC: "",
           coworkingspacememberDepartmentCode: "",
 
           disablePrograme: false,
@@ -189,6 +198,7 @@ export default {
       this.member[index].coworkingspacememberEmail = "";
       this.member[index].coworkingspacememberDepartmentCode = "";
       this.member[index].coworkingspacememberDepartmentCode = "";
+      this.member[index].coworkingspacememberIC = "";
 
       this.member[index].disableDeparCenFac = true;
       this.member[index].disablePrograme = false;
@@ -205,6 +215,8 @@ export default {
         coworkingspacememberProgramme: "",
         coworkingspacememberContact: "",
         coworkingspacememberEmail: "",
+        coworkingspacememberIC: "",
+
 
         disableDeparCenFac: true,
         disablePrograme: true
@@ -227,7 +239,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Centre for Postgraduate Studies and Research";
-        this.member[index].coworkingspacememberDepartmentCode = "cpsr";
+        this.member[index].coworkingspacememberDepartmentCode = 4;
       }
       if (
         this.member[index].coworkingspacememberUCID.charAt(3) == "R" ||
@@ -235,7 +247,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Centre for Pre-University Studies";
-        this.member[index].coworkingspacememberDepartmentCode = "cpus";
+        this.member[index].coworkingspacememberDepartmentCode = 5;
       }
       if (
         this.member[index].coworkingspacememberUCID.charAt(3) == "B" ||
@@ -243,7 +255,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Facuty of Accounting, Finance and Business";
-        this.member[index].coworkingspacememberDepartmentCode = "fafb";
+        this.member[index].coworkingspacememberDepartmentCode = 17;
       }
       if (
         this.member[index].coworkingspacememberUCID.charAt(3) == "K" ||
@@ -251,7 +263,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Facuty of Communication and Creative Industries";
-        this.member[index].coworkingspacememberDepartmentCode = "fcci";
+        this.member[index].coworkingspacememberDepartmentCode = 20;
       }
       if (
         this.member[index].coworkingspacememberUCID.charAt(3) == "L" ||
@@ -259,7 +271,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Facuty of Applied Science";
-        this.member[index].coworkingspacememberDepartmentCode = "foas";
+        this.member[index].coworkingspacememberDepartmentCode = 18;
       }
       if (
         this.member[index].coworkingspacememberUCID.charAt(3) == "V" ||
@@ -267,7 +279,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Facuty of Build Envionment";
-        this.member[index].coworkingspacememberDepartmentCode = "fobe";
+        this.member[index].coworkingspacememberDepartmentCode = 19;
       }
       if (
         this.member[index].coworkingspacememberUCID.charAt(3) == "M" ||
@@ -275,7 +287,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Facuty of Computing and Information Technology";
-        this.member[index].coworkingspacememberDepartmentCode = "focs";
+        this.member[index].coworkingspacememberDepartmentCode = 21;
       }
       if (
         this.member[index].coworkingspacememberUCID.charAt(3) == "G" ||
@@ -283,7 +295,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Facuty of Engineering and Technology";
-        this.member[index].coworkingspacememberDepartmentCode = "foet";
+        this.member[index].coworkingspacememberDepartmentCode = 22;
       }
       if (
         this.member[index].coworkingspacememberUCID.charAt(3) == "J" ||
@@ -291,7 +303,7 @@ export default {
       ) {
         this.member[index].coworkingspacememberDepartment =
           "Facuty of Social Science and Humanities";
-        this.member[index].coworkingspacememberDepartmentCode = "fssh";
+        this.member[index].coworkingspacememberDepartmentCode = 23;
       }
     }
 

@@ -74,6 +74,12 @@ Route::prefix('staff')->group(function(){
     });
 });
 
+Route::prefix('coworkingspace')->group(function(){
+    Route::get('/', 'CBIEVStaffController@showCwSpaceList')->name('coworkingspace.registration.list');
+    Route::get('{id}', 'CBIEVStaffController@showCwSPaceApplication')->name('coworkingspace.registration.detail');
+    Route::post('/approval/{id}/{type}', 'CWRecommendationController@recommendation')->name('coworkingspace.rec');
+});
+
 Route::prefix('registration')->group(function(){
     Route::prefix('isparkproject')->group(function(){
         Route::get('', 'ProjectRegistrationController@showRegistrationPage')->name('project.registration.show');
@@ -85,6 +91,13 @@ Route::prefix('registration')->group(function(){
         Route::get('home', 'PRTempAccountController@home')->name('pr.temp.home');
         Route::post('home', 'PRTempAccountController@update')->name('pr.temp.registration.update');
         Route::get('updateComplete', 'PRTempAccountController@updateComplete')->name('pr.temp.update.complete');
+    });
+
+    Route::prefix('coworkingspace')->group(function(){
+        Route::get('', 'CoWorkingSpaceApplicationController@showRegistrationForm')->name('coworkingspace.registration.show');
+        Route::post('', 'CoWorkingSpaceApplicationController@saveRegistration')->name('coworkingspace.registration.submit');
+        Route::get('/recommendation/{id}/{type}', 'CWRecommendationController@show')->name('coworkingspace.rec.form');
+        Route::post('/recommendation', 'CWRecommendationController@update')->name('coworkingspace.rec.save');
     });
    
 
@@ -107,10 +120,7 @@ Route::prefix('isparkmentor')->group(function(){
     // success
     Route::get('success','ProjectRegistrationController@success')->name('registration.redirect');
 
-    Route::prefix('coworkingspace')->group(function(){
-        Route::get('', 'CWSpaceRegistrationControllerController@showRegistrationForm')->name('coworkingspace.registration.show');
-        Route::post('', 'CWSpaceRegistrationControllerController@saveRegistration')->name('coworkingspace.registration.submit');
-    });
+    
 });
 
 /**
@@ -164,10 +174,6 @@ Route::get('/mentor', function(){
 });
 Route::get('/investor', function(){
     return view('form.registration.investor.investor_registration_form');
-});
-
-Route::get('/coworkingspace', function(){
-    return view('form.registration.co_working_space.coworkingspace');
 });
 
 Route::get('/test', function(){

@@ -3579,6 +3579,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3595,6 +3603,7 @@ __webpack_require__.r(__webpack_exports__);
         coworkingspacememberProgrammeList: [],
         coworkingspacememberContact: "",
         coworkingspacememberEmail: "",
+        coworkingspacememberIC: "",
         coworkingspacememberDepartmentCode: "",
         disablePrograme: false,
         disableDeparCenFac: true
@@ -3613,6 +3622,7 @@ __webpack_require__.r(__webpack_exports__);
       this.member[index].coworkingspacememberEmail = "";
       this.member[index].coworkingspacememberDepartmentCode = "";
       this.member[index].coworkingspacememberDepartmentCode = "";
+      this.member[index].coworkingspacememberIC = "";
       this.member[index].disableDeparCenFac = true;
       this.member[index].disablePrograme = false;
     },
@@ -3626,6 +3636,7 @@ __webpack_require__.r(__webpack_exports__);
           coworkingspacememberProgramme: "",
           coworkingspacememberContact: "",
           coworkingspacememberEmail: "",
+          coworkingspacememberIC: "",
           disableDeparCenFac: true,
           disablePrograme: true
         });
@@ -3643,47 +3654,47 @@ __webpack_require__.r(__webpack_exports__);
       if (this.member[index].coworkingspacememberUCID.length == 10) {
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "P" || this.member[index].coworkingspacememberUCID.charAt(3) == "p") {
           this.member[index].coworkingspacememberDepartment = "Centre for Postgraduate Studies and Research";
-          this.member[index].coworkingspacememberDepartmentCode = "cpsr";
+          this.member[index].coworkingspacememberDepartmentCode = 4;
         }
 
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "R" || this.member[index].coworkingspacememberUCID.charAt(3) == "r") {
           this.member[index].coworkingspacememberDepartment = "Centre for Pre-University Studies";
-          this.member[index].coworkingspacememberDepartmentCode = "cpus";
+          this.member[index].coworkingspacememberDepartmentCode = 5;
         }
 
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "B" || this.member[index].coworkingspacememberUCID.charAt(3) == "b") {
           this.member[index].coworkingspacememberDepartment = "Facuty of Accounting, Finance and Business";
-          this.member[index].coworkingspacememberDepartmentCode = "fafb";
+          this.member[index].coworkingspacememberDepartmentCode = 17;
         }
 
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "K" || this.member[index].coworkingspacememberUCID.charAt(3) == "k") {
           this.member[index].coworkingspacememberDepartment = "Facuty of Communication and Creative Industries";
-          this.member[index].coworkingspacememberDepartmentCode = "fcci";
+          this.member[index].coworkingspacememberDepartmentCode = 20;
         }
 
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "L" || this.member[index].coworkingspacememberUCID.charAt(3) == "l") {
           this.member[index].coworkingspacememberDepartment = "Facuty of Applied Science";
-          this.member[index].coworkingspacememberDepartmentCode = "foas";
+          this.member[index].coworkingspacememberDepartmentCode = 18;
         }
 
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "V" || this.member[index].coworkingspacememberUCID.charAt(3) == "v") {
           this.member[index].coworkingspacememberDepartment = "Facuty of Build Envionment";
-          this.member[index].coworkingspacememberDepartmentCode = "fobe";
+          this.member[index].coworkingspacememberDepartmentCode = 19;
         }
 
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "M" || this.member[index].coworkingspacememberUCID.charAt(3) == "m") {
           this.member[index].coworkingspacememberDepartment = "Facuty of Computing and Information Technology";
-          this.member[index].coworkingspacememberDepartmentCode = "focs";
+          this.member[index].coworkingspacememberDepartmentCode = 21;
         }
 
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "G" || this.member[index].coworkingspacememberUCID.charAt(3) == "g") {
           this.member[index].coworkingspacememberDepartment = "Facuty of Engineering and Technology";
-          this.member[index].coworkingspacememberDepartmentCode = "foet";
+          this.member[index].coworkingspacememberDepartmentCode = 22;
         }
 
         if (this.member[index].coworkingspacememberUCID.charAt(3) == "J" || this.member[index].coworkingspacememberUCID.charAt(3) == "j") {
           this.member[index].coworkingspacememberDepartment = "Facuty of Social Science and Humanities";
-          this.member[index].coworkingspacememberDepartmentCode = "fssh";
+          this.member[index].coworkingspacememberDepartmentCode = 23;
         }
       }
 
@@ -3805,47 +3816,47 @@ __webpack_require__.r(__webpack_exports__);
       if (this.coworkingspaceleaderUCID.length >= 4) {
         if (this.coworkingspaceleaderUCID.charAt(3) == 'P' || this.coworkingspaceleaderUCID.charAt(3) == 'p') {
           this.coworkingspaceleaderDepartment = "Centre for Postgraduate Studies and Research";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 4;
         }
 
         if (this.coworkingspaceleaderUCID.charAt(3) == 'R' || this.coworkingspaceleaderUCID.charAt(3) == 'r') {
           this.coworkingspaceleaderDepartment = "Centre for Pre-University Studies";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 5;
         }
 
         if (this.coworkingspaceleaderUCID.charAt(3) == 'B' || this.coworkingspaceleaderUCID.charAt(3) == 'b') {
           this.coworkingspaceleaderDepartment = "Facuty of Accounting, Finance and Business";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 17;
         }
 
         if (this.coworkingspaceleaderUCID.charAt(3) == 'K' || this.coworkingspaceleaderUCID.charAt(3) == 'k') {
           this.coworkingspaceleaderDepartment = "Facuty of Communication and Creative Industries";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 20;
         }
 
         if (this.coworkingspaceleaderUCID.charAt(3) == 'L' || this.coworkingspaceleaderUCID.charAt(3) == 'l') {
           this.coworkingspaceleaderDepartment = "Facuty of Applied Science";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 18;
         }
 
         if (this.coworkingspaceleaderUCID.charAt(3) == 'V' || this.coworkingspaceleaderUCID.charAt(3) == 'v') {
           this.coworkingspaceleaderDepartment = "Facuty of Build Envionment";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 19;
         }
 
         if (this.coworkingspaceleaderUCID.charAt(3) == 'M' || this.coworkingspaceleaderUCID.charAt(3) == 'm') {
           this.coworkingspaceleaderDepartment = "Facuty of Computing and Information Technology";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 20;
         }
 
         if (this.coworkingspaceleaderUCID.charAt(3) == 'G' || this.coworkingspaceleaderUCID.charAt(3) == 'g') {
           this.coworkingspaceleaderDepartment = "Facuty of Engineering and Technology";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 22;
         }
 
         if (this.coworkingspaceleaderUCID.charAt(3) == 'J' || this.coworkingspaceleaderUCID.charAt(3) == 'j') {
           this.coworkingspaceleaderDepartment = "Facuty of Social Science and Humanities";
-          this.coworkingspaceleaderDepartmentCode = 'focs';
+          this.coworkingspaceleaderDepartmentCode = 23;
         }
       } //continue here
       //url = getprog + faculty id code & lvl code
@@ -42043,6 +42054,46 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", {}, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: member.coworkingspacememberIC,
+                    expression: "member.coworkingspacememberIC"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "coworkingspacememberIC",
+                  placeholder: "Example:xxxxxx-xx-xxxx, etc...",
+                  required: "",
+                  pattern: "[0-9]{6}[-][0-9]{2}[-][0-9]{4}",
+                  title: "Example:xxxxxx-xx-xxxx",
+                  id: "coworkingspaceIcNo"
+                },
+                domProps: { value: member.coworkingspacememberIC },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      member,
+                      "coworkingspacememberIC",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
           _c("div", {}, [
             _c("div", { staticClass: "col-md-6" }, [
               _c("label", { attrs: { for: "coworkingspacememberUCID" } }, [
@@ -42127,15 +42178,15 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: member.coworkingspacememberDepartment,
-                    expression: "member.coworkingspacememberDepartment"
+                    value: member.coworkingspacememberDepartmentCode,
+                    expression: "member.coworkingspacememberDepartmentCode"
                   }
                 ],
                 attrs: {
                   type: "hidden",
-                  name: "coworkingspacememberDepartment[]"
+                  name: "coworkingspacememberDepartmentCode[]"
                 },
-                domProps: { value: member.coworkingspacememberDepartment },
+                domProps: { value: member.coworkingspacememberDepartmentCode },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
@@ -42143,7 +42194,7 @@ var render = function() {
                     }
                     _vm.$set(
                       member,
-                      "coworkingspacememberDepartment",
+                      "coworkingspacememberDepartmentCode",
                       $event.target.value
                     )
                   }
@@ -42169,7 +42220,6 @@ var render = function() {
                 _c("multiselect", {
                   attrs: {
                     id: "coworkingspacememberProgramme",
-                    name: "coworkingspacememberProgramme[]",
                     options: member.coworkingspacememberProgrammeList,
                     disabled: member.disablePrograme
                   },
@@ -42315,7 +42365,21 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "col-form-label", attrs: { for: "coworkingspaceIcNo" } },
+      [
+        _vm._v("IC No."),
+        _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -42423,7 +42487,7 @@ var render = function() {
               expression: "coworkingspaceleaderDepartmentCode"
             }
           ],
-          attrs: { type: "hidden", name: "coworkingspaceleaderDepartment" },
+          attrs: { type: "hidden", name: "coworkingspaceleaderDepartmentCode" },
           domProps: { value: _vm.coworkingspaceleaderDepartmentCode },
           on: {
             input: function($event) {
@@ -55336,8 +55400,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Workspace\CBEIV Web Portal\test\CBIEV-Web-Portal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Workspace\CBEIV Web Portal\test\CBIEV-Web-Portal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Workspace\CBEIV Web Portal\CBIEV-Web-Portal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Workspace\CBEIV Web Portal\CBIEV-Web-Portal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

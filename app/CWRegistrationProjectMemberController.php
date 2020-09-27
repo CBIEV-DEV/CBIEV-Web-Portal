@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
 
-class CWRegistrationProjectMemberController extends Pivot
+class CWRegistrationProjectMemberController extends Model
 {
     /* The table associated with the model.
     *
@@ -58,4 +58,35 @@ class CWRegistrationProjectMemberController extends Pivot
         
     ];
     //
+
+    public static function saveMember(
+      $name,
+      $ic,
+      $contact,
+      $email,
+      $uc_id,
+      $faculty,
+      $programme_study,
+      $type
+    )
+    {
+
+      return CWRegistrationProjectMemberController::firstOrCreate(
+        ['ic' => $ic],
+        [
+            'type' => $type,
+            'name' => $name,
+            'contact' => $contact,
+            'email' => $email,
+            'uc_id' => $uc_id,
+            'faculty' => $faculty,
+            'programme_study' => $programme_study
+        ]
+    );
+    }
+
+    public function projectApplication(){
+      
+      return $this->belongsToMany('App\CoWorkingSpaceApplication', 'co_working_project_member', 'cw_application_id', 'project_member_id')->withTimestamps();
+  } 
 }
