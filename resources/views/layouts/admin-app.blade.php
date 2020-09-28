@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'CBIEV-iSpark') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -41,13 +41,13 @@
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @if (Request::is('project') || Auth::guard('ispark-project')->check() && Request::is('project/*'))
+                                {{-- @if (Request::is('project') || Auth::guard('ispark-project')->check() && Request::is('project/*'))
                                 {{ Auth::user()->project_title }} <span class="caret"></span>
                                 @elseif (Request::is('participant') || Auth::guard('ispark-participant')->check() && Request::is('participant/*' ))
                                 {{ Auth::user()->name }} <span class="caret"></span>
                                 @elseif (Request::is('staff') || Auth::guard('cbiev-staff')->check() && Request::is('staff/*'))
                                 {{ Auth::user()->name }} <span class="caret"></span>
-                                @endif 
+                                @endif  --}}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

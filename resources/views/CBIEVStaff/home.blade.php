@@ -21,13 +21,16 @@
                     @endif
                         <div>
                             <ul>
-                                <li><a href="{{route('project.registration.list')}}">Project Registration</a></li>
+                                <li><a href="{{route('project.registration.list')}}">Project Application</a></li>
                             </ul>
                             <ul>
-                                <li><a href="{{route('mentor.registration.list')}}">Mentor Registration</a></li>
+                                <li><a href="{{route('mentor.registration.list')}}">Mentor Application</a></li>
                             </ul>
                             <ul>
-                                <li><a href="{{route('investor.registration.list')}}">Investor Registration</a></li>
+                                <li><a href="{{route('investor.registration.list')}}">Investor Application</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="{{route('coworkingspace.registration.list')}}">Co-Working Space Application</a></li>
                             </ul>
                         </div>
                 </div>

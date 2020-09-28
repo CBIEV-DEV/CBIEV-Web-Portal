@@ -63,7 +63,7 @@
             <div class="form-row">
                 <div class="form-group col-md-10">
                     <label for="recommendationReason">Reason for not recommend</label><span style="color:red"> *</span>
-                    <textarea class="form-control" id="recommendationReason" name="recommendationReason" cols="30"
+                    <textarea disabled class="form-control" id="recommendationReason" name="recommendationReason" cols="30"
                         rows="10" value=""></textarea>
                     @if ($errors->has('recommendationReason'))
                     <div class="alert alert-danger" role="alert">
