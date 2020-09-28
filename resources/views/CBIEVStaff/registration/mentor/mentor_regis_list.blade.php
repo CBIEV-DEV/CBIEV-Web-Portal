@@ -9,7 +9,7 @@
                 <thead class="thead-light">
                     <th scope="col">ID</th>
                     <th scope="col">Registrant Name</th>
-                    <th scope="col">Aproval Status</th>
+                    {{-- <th scope="col">Aproval Status</th> --}}
                     <th scope="col">Registered At</th>
                 </thead>
                 <tbody>
@@ -19,9 +19,8 @@
                         <td>
                             <a href="{{route('mentor.registration.detail', [$mr-> id])}}">{{$mr-> name}}</a>
                         </td>
-                        <td>
-                            {{-- {{$mr-> statusTracking-> sortByDesc('created_at')-> first()}} --}}
-                            @switch($mr-> statusTracking-> sortByDesc('created_at')-> first()-> mentor_registration_status)
+                        {{-- <td>
+                            @switch($mr-> statusTracking()-> orderBy('created_at')-> first()-> mentor_registration_status)
                                 @case(0)
                                 Submited
                                     @break
@@ -40,7 +39,7 @@
                                 @case(5)
                                 Registration Rejected
                                 @break                                                
-                        @endswitch
+                        @endswitch --}}
                         </td>
                         <td>{{$mr-> created_at}}</td>
                     </tr>

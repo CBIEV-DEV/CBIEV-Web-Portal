@@ -36,12 +36,7 @@ class MentorRegistrationController extends Controller
         // return dd($request);
         // validation
         // check company exist and save
-        if ($request-> mentorHasCompany == "true") {
-            $companyID = Company::checkCompanyIsExistOrCreateNew($request-> mentorCompanyRegNo, $request-> mentorCompanyName)-> id;
-        }else{
-            $companyID = null;
-        }
-
+        $companyID = Company::saveCompany($request-> mentorCompanyRegNo, $request-> mentorCompanyName)-> id;
 
         // save mentor registration
         $newMentorRegistration = MentorRegistration::createNewMentorRegistration(
@@ -60,7 +55,7 @@ class MentorRegistrationController extends Controller
         //save mentor upload file
         $path = 'mentor_registration/' . $newMentorRegistrationID;
         
-        $newMentorRegistration->saveUpload(FileUploadController::upload($path, $request-> mentorFile, 'mentor_registration_image.png'));
+        // $newMentorRegistration->saveUpload(FileUploadController::upload($path, $request-> mentorFile, 'mentor_registration_image.png'));
         
         // set mentor type sync pivot table
         if($request-> has('mentorTypeBusi') && $request-> mentorTypeBusi == 'on'){// for business mentor
@@ -100,7 +95,7 @@ class MentorRegistrationController extends Controller
      */
     public function showTerminationForm($id)
     {
-        MentorRegistrationStatusTrackingController::decrypt($id);
+        // MentorRegistrationStatusTrackingController::decrypt($id);
 
         return view('');
     }
@@ -111,13 +106,13 @@ class MentorRegistrationController extends Controller
      */
     public function terminateRegistration(Request $request)
     {
-        $decryptedID = $this-> decrypt($request-> id);
+        // $decryptedID = $this-> decrypt($request-> id);
         // Terminate the mentor registration
-        MentorRegistration::terminateMentorRegistration($decryptedID);
+        // MentorRegistration::terminateMentorRegistration($decryptedID);
 
-        MentorRegistrationStatusTracking::newTerminatedStatus($this-> find($decryptedID));
+        // MentorRegistrationStatusTracking::newTerminatedStatus($this-> find($decryptedID));
         // Notify registrant successfull termination of the mentor registration
-        EmailController::mentorRegistrationTermination();
+        // EmailController::mentorRegistrationTermination();
     }
 
     /**
@@ -139,10 +134,10 @@ class MentorRegistrationController extends Controller
      */
     public function decrypt($encryptedValue)
     {
-        try {
-            return Crypt::decrypt($encryptedValue);
-        } catch (Illuminate\Contracts\Encryption\DecryptException $e) {
-            abort(401);
-        }
+        // try {
+        //     return Crypt::decrypt($encryptedValue);
+        // } catch (Illuminate\Contracts\Encryption\DecryptException $e) {
+        //     abort(401);
+        // }
     }
 }

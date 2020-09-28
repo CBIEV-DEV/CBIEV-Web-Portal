@@ -47,7 +47,9 @@
 <div class="form-group row">
     <label for="mentorCompanyEmail" class="col-sm-2 col-form-label">UC Email/Official Email<span style="color:red">*</span></label>
     <div class="col-sm-10">
-        <input type="text" name="" placeholder="Example: ABC-wa15@student.tarc.edu.my, ABC123@gmail.com, etc...." required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$" title="Example: ABC-wa15@student.tarc.edu.my, ABC123@gmail.com, etc...."  id="mentorCompanyEmail" class="form-control" :disabled="mentorOfficialEmailDisable" v-model="mentorOfficialEmail">
+        <input type="text" name="" placeholder="Example: ABC-wa15@student.tarc.edu.my, ABC123@gmail.com, etc...." required="" 
+        {{-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$"  --}}
+        title="Example: ABC-wa15@student.tarc.edu.my, ABC123@gmail.com, etc...."  id="mentorCompanyEmail" class="form-control" :disabled="mentorOfficialEmailDisable" v-model="mentorOfficialEmail">
         <input type="hidden" name="mentorCompanyEmail" v-model="mentorOfficialEmail">
     </div>
 </div>
