@@ -55,6 +55,7 @@ class ProjectRegistrationController extends Controller
      */
     public function submitRegistration(Request $request)
     {
+        // return dd(isset($request->supType));
         // Sanitize input from request
         $this->sanitize($request);// sanitize $request input
         // Save Team Leader
@@ -62,10 +63,21 @@ class ProjectRegistrationController extends Controller
         // Save Project Registration
         $projectRegistration = ProjectRegistration::saveRegistration($request-> projectTitle, $request-> projectstate, $request-> prodSol, $request-> targetMark, $request-> projectCategory, $teamLeader->id);
         $projectRegistration-> projectMember()-> sync($teamLeader, false);// sync project registration with team leader
-        // Save Project Participants
-        $this->saveProjectParticipant($request, $projectRegistration);
-        // Save Project Supervisor
-        $this->saveProjectSupervisor($request, $projectRegistration);
+
+
+        if(isset($request->memberType))
+        {
+            // Save Project Participants
+            $this->saveProjectParticipant($request, $projectRegistration);
+        }
+        if(isset($request->supType))
+        {
+            // Save Project Supervisor
+            $this->saveProjectSupervisor($request, $projectRegistration);
+        }
+        
+        
+
         // Save Project Status 'Submited'
         ProjectRegistrationStatusTracking::saveSubmitedStatus($projectRegistration-> id);
         // Send Notification Mail to Team Leader
@@ -112,8 +124,9 @@ class ProjectRegistrationController extends Controller
      */
     public function saveProjectParticipant($request, $projectRegistration)
     {   
-        if ($request-> participantIndex > 0) {// Check if participant is more than 0
-            for ($i=0; $i < $request-> participantIndex; $i++) {// Loop to save each participant
+        $participantCount = count($request-> memberType);
+        if ($participantCount > 0) {// Check if participant is more than 0
+            for ($i=0; $i < $participantCount; $i++) {// Loop to save each participant
                 
                 switch ($request-> memberType[$i]) {// Set Company ID according to participant type
                     case 1:
@@ -144,8 +157,9 @@ class ProjectRegistrationController extends Controller
      */
     public function saveProjectSupervisor($request, $projectRegistration)
     {
-        if ($request-> supervisorIndex > 0) {// Check if project supervisor is more than 0
-            for ($i=0; $i < $request-> supervisorIndex; $i++) {// Loop to save each participant
+        $participantCount = count($request-> supType);
+        if ($request-> supType > 0) {// Check if project supervisor is more than 0
+            for ($i=0; $i < $request-> supType; $i++) {// Loop to save each participant
                 switch ($request-> supType[$i]) {// Set Company ID according to supervisor type and set faculty id
                     case 2: 
                         $this->center_faculty_id =  CenterFaculty::getIDByName($request-> supervisorDepartmentCode[$i] );// set faculty id
