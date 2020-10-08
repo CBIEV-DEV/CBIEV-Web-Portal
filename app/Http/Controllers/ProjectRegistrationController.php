@@ -157,10 +157,12 @@ class ProjectRegistrationController extends Controller
      */
     public function saveProjectSupervisor($request, $projectRegistration)
     {
-        $participantCount = count($request-> supType);
-        if ($request-> supType > 0) {// Check if project supervisor is more than 0
-            for ($i=0; $i < $request-> supType; $i++) {// Loop to save each participant
-                switch ($request-> supType[$i]) {// Set Company ID according to supervisor type and set faculty id
+        $supervisorCount = count($request-> supType);
+        if ($supervisorCount > 0) {// Check if project supervisor is more than 0
+            for ($i=0; $i < $supervisorCount; $i++) {// Loop to save each participant
+                // return dd($request-> supType[$i]);
+                $supType = $request-> supType[$i];
+                switch ($supType) {// Set Company ID according to supervisor type and set faculty id
                     case 2: 
                         $this->center_faculty_id =  CenterFaculty::getIDByName($request-> supervisorDepartmentCode[$i] );// set faculty id
                         $this->companyID =  1;// 2 is staff, Company ID 1 = taruc
